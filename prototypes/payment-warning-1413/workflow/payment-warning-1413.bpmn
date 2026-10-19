@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1413" targetNamespace="https://simon.example/workflows/ticket-1413" exporter="Simon ticket 1413 workflow draft" exporterVersion="1.0">
+  <bpmn:process id="Process_1413" name="Payment name warning — payroll Step 2" isExecutable="false">
+    <bpmn:documentation>Review draft based on the approved ticket 1413 proposal and UI. Actor: BC/President. Trigger: Approve Payroll in Step 2. Existing payroll approval validation, permissions, failures, and other workflow steps are outside this enhancement. Warning wording remains subject to Vy review.</bpmn:documentation>
+    <bpmn:laneSet id="LaneSet_1413">
+      <bpmn:lane id="Lane_BC" name="BC / President">
+        <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Approve</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Read</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Choice</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Return</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Simon" name="Simon">
+        <bpmn:flowNodeRef>Check</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Match</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Warning</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Highlight</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Existing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start" name="Review payroll&#10;Step 2">
+      <bpmn:outgoing>F_Start</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Approve" name="Click Approve Payroll">
+      <bpmn:incoming>F_Start</bpmn:incoming>
+      <bpmn:incoming>F_Retry</bpmn:incoming>
+      <bpmn:outgoing>F_Check</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Check" name="Check payment names&#10;against operator full name">
+      <bpmn:documentation>Cheques: use Name on cheque. E-transfers: use Client name stored on the payment, not job Client name. Compare to payroll operator full name after trimming, collapsing extra whitespace, and ignoring capitalization. Exact full-name comparison only. Amount is not a matching condition.</bpmn:documentation>
+      <bpmn:incoming>F_Check</bpmn:incoming>
+      <bpmn:outgoing>F_Match</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Match" name="Any payment name&#10;matches operator?" default="F_No">
+      <bpmn:incoming>F_Match</bpmn:incoming>
+      <bpmn:outgoing>F_Yes</bpmn:outgoing>
+      <bpmn:outgoing>F_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Warning" name="Show non-blocking&#10;payment-name warning">
+      <bpmn:incoming>F_Yes</bpmn:incoming>
+      <bpmn:outgoing>F_Show</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Read" name="Select a warning&#10;action">
+      <bpmn:incoming>F_Show</bpmn:incoming>
+      <bpmn:outgoing>F_Action</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Choice" name="Reviewer action?">
+      <bpmn:incoming>F_Action</bpmn:incoming>
+      <bpmn:outgoing>F_Review</bpmn:outgoing>
+      <bpmn:outgoing>F_Acknowledge</bpmn:outgoing>
+      <bpmn:outgoing>F_Dismiss</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Highlight" name="Scroll to first match;&#10;highlight all matching rows">
+      <bpmn:incoming>F_Review</bpmn:incoming>
+      <bpmn:outgoing>F_Retry</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Return" name="Return to payroll;&#10;no approval submitted">
+      <bpmn:incoming>F_Dismiss</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Existing" name="Continue existing&#10;payroll approval process">
+      <bpmn:documentation>Handoff to the existing approval process. Existing checks and outcomes are unchanged and not expanded in this enhancement diagram. This task does not mean payroll is automatically approved.</bpmn:documentation>
+      <bpmn:incoming>F_No</bpmn:incoming>
+      <bpmn:incoming>F_Acknowledge</bpmn:incoming>
+      <bpmn:outgoing>F_End</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="End" name="Existing approval&#10;process continues">
+      <bpmn:incoming>F_End</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_Start" sourceRef="Start" targetRef="Approve" />
+    <bpmn:sequenceFlow id="F_Check" sourceRef="Approve" targetRef="Check" />
+    <bpmn:sequenceFlow id="F_Match" sourceRef="Check" targetRef="Match" />
+    <bpmn:sequenceFlow id="F_Yes" sourceRef="Match" targetRef="Warning" name="Yes">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">oneOrMorePaymentNamesMatchOperator</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_No" sourceRef="Match" targetRef="Existing" name="No" />
+    <bpmn:sequenceFlow id="F_Show" sourceRef="Warning" targetRef="Read" />
+    <bpmn:sequenceFlow id="F_Action" sourceRef="Read" targetRef="Choice" />
+    <bpmn:sequenceFlow id="F_Review" sourceRef="Choice" targetRef="Highlight" name="Review payments">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">reviewerAction == 'reviewPayments'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_Retry" sourceRef="Highlight" targetRef="Approve" name="Click Approve Payroll again after review" />
+    <bpmn:sequenceFlow id="F_Acknowledge" sourceRef="Choice" targetRef="Existing" name="Acknowledge and approve">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">reviewerAction == 'acknowledgeAndApprove'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_Dismiss" sourceRef="Choice" targetRef="Return" name="Close / Escape">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">reviewerAction == 'dismissWarning'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_End" sourceRef="Existing" targetRef="End" />
+    <bpmn:textAnnotation id="Matching_Rule">
+      <bpmn:text>MATCHING RULE
+Cheque: Name on cheque. E-transfer: Client name from the payment.
+Compare with the payroll operator’s full name. Ignore capitalization and extra spaces; require an exact full-name match. The job’s Client name is not used.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Scope_Note">
+      <bpmn:text>APPROVAL BEHAVIOR
+The warning does not block approval or require payment correction.
+No match: continue the existing approval process. Review: return to the matching rows. Acknowledgment: continue approval. Closing the warning does not submit approval.</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmn:collaboration id="Collaboration_1413">
+    <bpmn:participant id="Participant_1413" name="Ticket 1413 · Payment warning · Payroll Step 2" processRef="Process_1413" />
+  </bpmn:collaboration>
+  <bpmndi:BPMNDiagram id="Diagram_1413">
+    <bpmndi:BPMNPlane id="Plane_1413" bpmnElement="Collaboration_1413">
+      <bpmndi:BPMNShape id="Shape_Participant_1413" bpmnElement="Participant_1413" isHorizontal="true" bioc:fill="#ffffff" bioc:stroke="#8a97a9">
+        <dc:Bounds x="60" y="180" width="1690" height="660" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_BC" bpmnElement="Lane_BC" isHorizontal="true" bioc:fill="#f8fafc" bioc:stroke="#bac3d0">
+        <dc:Bounds x="90" y="180" width="1660" height="310" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_Simon" bpmnElement="Lane_Simon" isHorizontal="true" bioc:fill="#ffffff" bioc:stroke="#bac3d0">
+        <dc:Bounds x="90" y="490" width="1660" height="350" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start" bpmnElement="Start" bioc:fill="#ffffff" bioc:stroke="#42536a">
+        <dc:Bounds x="140" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="115" y="319" width="90" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Approve" bpmnElement="Approve" bioc:fill="#ffffff" bioc:stroke="#42536a">
+        <dc:Bounds x="230" y="250" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Check" bpmnElement="Check" bioc:fill="#ffffff" bioc:stroke="#42536a">
+        <dc:Bounds x="215" y="558" width="180" height="88" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Match" bpmnElement="Match" isMarkerVisible="true" bioc:fill="#fff7df" bioc:stroke="#a57316">
+        <dc:Bounds x="470" y="577" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="430" y="515" width="130" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Warning" bpmnElement="Warning" bioc:fill="#fff7df" bioc:stroke="#a57316">
+        <dc:Bounds x="635" y="558" width="180" height="88" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Read" bpmnElement="Read" bioc:fill="#fff7df" bioc:stroke="#a57316">
+        <dc:Bounds x="635" y="250" width="180" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Choice" bpmnElement="Choice" isMarkerVisible="true" bioc:fill="#fff7df" bioc:stroke="#a57316">
+        <dc:Bounds x="885" y="265" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="850" y="327" width="120" height="30" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Highlight" bpmnElement="Highlight" bioc:fill="#fff7df" bioc:stroke="#a57316">
+        <dc:Bounds x="865" y="710" width="240" height="85" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Return" bpmnElement="Return" bioc:fill="#ffffff" bioc:stroke="#42536a">
+        <dc:Bounds x="1020" y="395" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="970" y="442" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Existing" bpmnElement="Existing" bioc:fill="#ecf8ef" bioc:stroke="#358450">
+        <dc:Bounds x="1330" y="554" width="210" height="96" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End" bpmnElement="End" bioc:fill="#ecf8ef" bioc:stroke="#358450">
+        <dc:Bounds x="1640" y="584" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1580" y="631" width="155" height="42" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_F_Start" bpmnElement="F_Start">
+        <di:waypoint x="176" y="290" />
+        <di:waypoint x="230" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Check" bpmnElement="F_Check">
+        <di:waypoint x="305" y="330" />
+        <di:waypoint x="305" y="558" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Match" bpmnElement="F_Match">
+        <di:waypoint x="395" y="602" />
+        <di:waypoint x="470" y="602" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Yes" bpmnElement="F_Yes">
+        <di:waypoint x="520" y="602" />
+        <di:waypoint x="635" y="602" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="560" y="580" width="40" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_No" bpmnElement="F_No">
+        <di:waypoint x="495" y="627" />
+        <di:waypoint x="495" y="680" />
+        <di:waypoint x="1280" y="680" />
+        <di:waypoint x="1280" y="602" />
+        <di:waypoint x="1330" y="602" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="520" y="657" width="40" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Show" bpmnElement="F_Show">
+        <di:waypoint x="725" y="558" />
+        <di:waypoint x="725" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Action" bpmnElement="F_Action">
+        <di:waypoint x="815" y="290" />
+        <di:waypoint x="885" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Review" bpmnElement="F_Review">
+        <di:waypoint x="910" y="315" />
+        <di:waypoint x="910" y="710" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="925" y="493" width="115" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Retry" bpmnElement="F_Retry">
+        <di:waypoint x="865" y="752" />
+        <di:waypoint x="200" y="752" />
+        <di:waypoint x="200" y="290" />
+        <di:waypoint x="230" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="340" y="765" width="290" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Acknowledge" bpmnElement="F_Acknowledge">
+        <di:waypoint x="935" y="290" />
+        <di:waypoint x="1435" y="290" />
+        <di:waypoint x="1435" y="554" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1090" y="261" width="190" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_Dismiss" bpmnElement="F_Dismiss">
+        <di:waypoint x="910" y="265" />
+        <di:waypoint x="910" y="210" />
+        <di:waypoint x="1038" y="210" />
+        <di:waypoint x="1038" y="395" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="938" y="184" width="110" height="22" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_End" bpmnElement="F_End">
+        <di:waypoint x="1540" y="602" />
+        <di:waypoint x="1640" y="602" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_Matching_Rule" bpmnElement="Matching_Rule">
+        <dc:Bounds x="60" y="885" width="790" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Scope_Note" bpmnElement="Scope_Note">
+        <dc:Bounds x="1000" y="885" width="710" height="120" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
