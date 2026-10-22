@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>SIMON Marketing Management — Proposal</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+
 </head>
 <body>
 <iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="SIMON Marketing Management — Proposal" data-srcdoc="&lt;!doctype html&gt;
@@ -94,7 +95,7 @@
     --color-ring-primary,
     light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
   );
-  --font-size-base: var(--font-text-md-size, 14px);
+  --font-size-base: var(--font-text-md-size, 16px);
   --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
   --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
   --green: light-dark(rgb(0 162 64), rgb(64 201 119));
@@ -109,7 +110,10 @@
   --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
 
   /* Internal implementation variables; not part of the agent contract. */
-  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-sans:
+    -apple-system-body, ui-sans-serif, -apple-system, system-ui, &quot;Segoe UI&quot;,
+    Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;,
+    &quot;Segoe UI Symbol&quot;;
   --font-mono:
     ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
     monospace;
@@ -119,18 +123,18 @@
   --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
   --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
   --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
-  --font-weight-normal: 430;
+  --font-weight-normal: 400;
   --font-weight-medium: 500;
   --icon-size: 16px;
   --line-height-normal: calc(var(--font-size-normal) * 1.5);
   --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
   --line-height-small: calc(var(--font-size-small) + 4px);
   --corner-shape: round;
-  --radius: var(--border-radius-lg, 10px);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+  --radius: var(--border-radius-lg, 8px);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
-  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-2xl: calc(var(--radius) * 2);
   --radius-full: 9999px;
   --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
   --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
@@ -180,9 +184,10 @@ html &gt; body {
   color: var(--foreground);
   background: transparent !important;
   font-family: var(--font-sans) !important;
-  font-size: var(--font-size-normal);
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--font-size-base);
+  line-height: calc(var(--font-size-base) * 1.625);
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
 }
 
 .cursor-interaction {
@@ -192,9 +197,9 @@ html &gt; body {
 a {
   color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
   cursor: var(--cursor-interaction, pointer);
-  font-weight: var(--font-weight-medium, 500);
   text-decoration: none;
   text-underline-offset: 2px;
+  font-weight: inherit;
 }
 
 a:is(:hover, :focus-visible) {
@@ -212,32 +217,51 @@ h6,
 p {
   margin-block: 0;
 }
-
-h1 {
-  font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-medium);
-  line-height: 1.25;
-}
-
-h2 {
-  font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-medium);
-  line-height: 1.25;
-}
-
+p,
+h1,
+h2,
 h3,
 h4,
 h5,
-h6 {
-  font-size: var(--font-size-h3);
-  font-weight: var(--font-weight-medium);
-  line-height: 1.3;
+h6,
+li,
+.table {
+  font-family: var(--font-sans);
 }
 
+h1 {
+  font-size: calc(var(--font-size-base) * 1.5);
+  line-height: 1.3333333333;
+}
+
+h2 {
+  font-size: calc(var(--font-size-base) * 1.25);
+  line-height: 1.4;
+}
+h3 {
+  font-size: calc(var(--font-size-base) * 1.125);
+  line-height: 1.5555555556;
+}
+h4 {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+h5,
+h6 {
+  font-size: var(--font-size-base);
+  line-height: calc(var(--font-size-base) * 1.625);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 b,
 strong,
 th {
-  font-weight: var(--font-weight-medium);
+  font-weight: 600;
 }
 
 code:not(pre code) {
@@ -253,6 +277,12 @@ code:not(pre code) {
   box-decoration-break: clone;
   word-break: break-word;
 }
+pre,
+pre code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+}
 
 .table-responsive {
   width: 100%;
@@ -262,10 +292,14 @@ code:not(pre code) {
 
 .table {
   width: 100%;
-  border-collapse: collapse;
   color: var(--foreground);
   font: inherit;
   text-align: start;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: calc(var(--font-size-base) * 0.875);
+  line-height: calc(var(--font-size-base) * 1.625);
+  font-family: var(--font-sans);
 }
 
 .table :is(th, td) {
@@ -275,6 +309,10 @@ code:not(pre code) {
   border-bottom: 1px solid var(--border);
   text-align: start;
   vertical-align: top;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+.table :is(th, td):not(:last-child) {
+  padding-inline-end: calc(var(--font-size-base) * 1.5);
 }
 
 .table-responsive &gt; .table :is(th, td) {
@@ -289,17 +327,21 @@ code:not(pre code) {
   font-weight: 600;
 }
 
-.table thead th {
-  padding-block: 8px;
-  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+.table thead :is(th, td) {
+  border-bottom-color: var(--border-strong, var(--input));
+  padding-block: calc(var(--font-size-base) / 2);
+  line-height: var(--font-size-base);
 }
 
 .table tbody tr:last-child :is(th, td) {
   border-bottom: 0;
 }
+.table tbody :is(th, td) {
+  padding-block: calc(var(--font-size-base) * 0.625);
+}
 
 .table.table-sm :is(th, td) {
-  padding-block: 6px;
+  padding-block: 8px;
 }
 
 .table.table-sm :is(th, td):not(:last-child) {
@@ -376,19 +418,29 @@ code:not(pre code) {
     var(--tooltip-available-height, calc(100vh - 10px)),
     calc(100vh - 10px)
   );
-  padding: 4px 8px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
   corner-shape: var(--corner-shape);
-  color: var(--popover-foreground);
-  background: var(--popover);
-  box-shadow: none;
-  font-size: var(--font-size-tooltip);
-  line-height: var(--line-height-tooltip);
   overflow-wrap: break-word;
   white-space: normal;
   pointer-events: none;
   user-select: none;
+  font-family: var(--font-sans);
+  padding: 5px 12px;
+  border-color: color-mix(
+    in oklab,
+    light-dark(var(--primary-foreground), var(--foreground)) 5%,
+    transparent
+  );
+  border-radius: var(--radius-2xl);
+  color: light-dark(var(--primary-foreground), var(--foreground));
+  background: light-dark(var(--foreground), var(--popover));
+  box-shadow: 0 8px 18px rgb(15 23 42 / 20%);
+  letter-spacing: -0.15px;
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
 }
 
 .viz-grid {
@@ -453,16 +505,21 @@ hr {
 }
 
 .viz-badge {
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  color: var(--accent-foreground);
-  background: var(--accent);
-  font-weight: var(--font-weight-medium);
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  color: color-mix(in srgb, var(--foreground) 40%, var(--muted-foreground));
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
 }
 
 small,
-.text-small,
-.viz-badge {
+.text-small {
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
 }
@@ -516,13 +573,22 @@ small,
   font: inherit;
 }
 
+/* Match inline alignment without overriding a containing flex or grid layout. */
+.btn,
+.nav-link,
+.form-control,
+.form-select,
+.form-range,
+.form-check {
+  vertical-align: middle;
+}
+
 .btn,
 .nav-link {
   appearance: button;
   display: inline-flex;
   inline-size: fit-content;
   max-inline-size: 100%;
-  min-height: 28px;
   align-items: center;
   justify-content: center;
   gap: 4px;
@@ -530,16 +596,31 @@ small,
   padding: 0 8px;
   -webkit-app-region: no-drag;
   border: 1px solid var(--input);
-  border-radius: var(--radius-lg);
   corner-shape: var(--corner-shape);
-  color: var(--secondary-foreground);
-  background: var(--secondary);
   cursor: var(--cursor-interaction, pointer);
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
   user-select: none;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: inherit;
+  font-family: var(--font-sans);
+  height: fit-content;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding-inline: var(--control-spacing, 12px);
+  border-color: transparent;
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+}
+
+.btn {
+  border-color: var(--border);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
 }
 
 .btn:is(.btn-block, .viz-tile) {
@@ -557,16 +638,22 @@ a.btn {
   text-decoration: none;
 }
 
-.btn:not(:disabled):hover,
+.btn:not(:disabled):hover {
+  background: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
 .nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
-  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 .btn-primary {
-  border-color: transparent;
+  border-color: var(--border);
   color: var(--primary-foreground);
   background: var(--foreground);
-  background-clip: padding-box;
+  background-clip: border-box;
 }
 
 .btn-primary .text-muted {
@@ -575,7 +662,7 @@ a.btn {
 
 .btn-primary:not(:disabled):hover {
   background: color-mix(in srgb, var(--foreground) 80%, transparent);
-  background-clip: padding-box;
+  background-clip: border-box;
 }
 
 .btn-ghost {
@@ -585,8 +672,11 @@ a.btn {
 }
 
 .btn-ghost:not(:disabled):hover {
-  color: var(--foreground);
-  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+  color: var(--muted-foreground);
+  background: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
 }
 
 .nav-pills .nav-link {
@@ -815,14 +905,42 @@ a.btn {
 .form-control {
   display: block;
   width: 100%;
-  min-height: 28px;
   padding: 0 8px;
   outline: none;
   border: 1px solid var(--input);
-  border-radius: var(--radius-lg);
   corner-shape: var(--corner-shape);
   color: var(--foreground);
-  background: var(--secondary);
+  font-family: var(--font-sans);
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding-inline: calc(4px + var(--control-spacing, 12px) / 2);
+  border-color: var(--input);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--popover) 96%, transparent);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4285714286;
+}
+.form-control:is(
+  [type=&quot;file&quot;],
+  [type=&quot;date&quot;],
+  [type=&quot;datetime-local&quot;],
+  [type=&quot;month&quot;],
+  [type=&quot;week&quot;],
+  [type=&quot;color&quot;]
+) {
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  line-height: 18px;
+}
+.form-control:is(
+  [type=&quot;date&quot;],
+  [type=&quot;datetime-local&quot;],
+  [type=&quot;month&quot;],
+  [type=&quot;week&quot;]
+) {
+  padding-inline: var(--control-spacing, 12px);
 }
 
 .form-control::placeholder {
@@ -830,14 +948,12 @@ a.btn {
 }
 
 .form-control[type=&quot;file&quot;] {
-  padding: 0;
   overflow: hidden;
   cursor: var(--cursor-interaction, pointer);
+  padding: 0;
 }
 
 .form-control[type=&quot;file&quot;]::file-selector-button {
-  min-height: 26px;
-  margin-right: 8px;
   padding: 0 8px;
   border: 0;
   border-right: 1px solid var(--input);
@@ -845,6 +961,9 @@ a.btn {
   background: var(--secondary);
   cursor: inherit;
   font: inherit;
+  min-height: calc(10px + 2 * var(--control-spacing, 12px));
+  padding-inline: var(--control-spacing, 12px);
+  margin-inline-end: var(--control-spacing, 12px);
 }
 
 .form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
@@ -853,7 +972,7 @@ a.btn {
 
 .form-control-color[type=&quot;color&quot;] {
   width: 40px;
-  height: 28px;
+  height: calc(12px + 2 * var(--control-spacing, 12px));
   padding: 3px;
   cursor: var(--cursor-interaction, pointer);
 }
@@ -870,58 +989,94 @@ a.btn {
 
 textarea.form-control {
   height: auto;
-  min-height: 72px;
-  padding: 8px 10px;
   resize: vertical;
+  min-height: 96px;
+  padding: 8px 10px;
 }
 
 .form-control:focus-visible {
   border-color: var(--ring);
-  box-shadow: inset 0 0 0 1px var(--ring);
+  box-shadow: none;
+}
+.form-control:disabled {
+  color: var(--muted-foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  opacity: 1;
+}
+.form-control[aria-invalid=&quot;true&quot;] {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--red) 20%, transparent);
 }
 
 .form-control:disabled,
 .form-select:disabled {
   cursor: not-allowed;
-  opacity: 0.4;
 }
 
 .form-select {
   appearance: none;
   display: block;
   width: 100%;
-  min-height: 28px;
+  height: fit-content;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
   margin: 0;
-  padding: 0 32px 0 8px;
+  /* The secondary icon role is 14px at compact density and 16px at web density. */
+  --icon-size: calc(10px + var(--control-spacing, 12px) / 2);
+  /* Settings dropdowns retain a 12px inset and a 4px text-to-chevron gap. */
+  padding: 0 calc(16px + var(--icon-size)) 0 12px;
   outline: none;
-  border: 1px solid var(--input);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
   corner-shape: var(--corner-shape);
   color: var(--foreground);
   background-color: var(--secondary);
   background-image:
-    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
-    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+    linear-gradient(
+      45deg,
+      transparent calc(50% - 0.6px),
+      var(--muted-foreground) calc(50% - 0.6px) calc(50% + 0.6px),
+      transparent calc(50% + 0.6px)
+    ),
+    linear-gradient(
+      135deg,
+      transparent calc(50% - 0.6px),
+      var(--muted-foreground) calc(50% - 0.6px) calc(50% + 0.6px),
+      transparent calc(50% + 0.6px)
+    );
   background-position:
-    calc(100% - 14px) 50%,
-    calc(100% - 10px) 50%;
+    calc(100% - 12px - var(--icon-size) / 2) 50%,
+    calc(100% - 12px - var(--icon-size) * 0.18) 50%;
   background-repeat: no-repeat;
-  background-size: 4px 4px;
+  background-size: calc(var(--icon-size) * 0.32) calc(var(--icon-size) * 0.32);
   cursor: var(--cursor-interaction, default);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+}
+
+.form-select option {
+  color: var(--popover-foreground);
+  background-color: var(--popover);
 }
 
 .form-select:not(:disabled):hover {
-  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+  background-color: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
 }
 
 .form-select:focus-visible {
-  border-color: var(--ring);
-  box-shadow: inset 0 0 0 1px var(--ring);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+.form-select:disabled {
+  opacity: 0.4;
 }
 
 .form-check {
   display: flex;
-  min-height: 20px;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
   align-items: center;
   gap: 6px;
 }
@@ -943,11 +1098,15 @@ textarea.form-control {
 }
 
 .form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
-  border-color: var(--input);
-  border-radius: var(--radius-sm);
-  corner-shape: var(--corner-shape);
-  background-color: var(--secondary);
+  corner-shape: round;
   box-shadow: var(--shadow-sm);
+  position: relative;
+  width: calc(10px + var(--control-spacing, 12px) / 2);
+  height: calc(10px + var(--control-spacing, 12px) / 2);
+  border-color: var(--border-strong, var(--input));
+  border-radius: calc(var(--radius-sm) / 2);
+  background-color: transparent;
+  color: var(--foreground);
 }
 
 .form-check:not(.form-switch)
@@ -955,9 +1114,10 @@ textarea.form-control {
   background-color: var(--card);
 }
 
-.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
-  border-color: var(--primary);
-  background-color: var(--primary);
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:is(:checked, :indeterminate) {
+  border-color: var(--border-strong, var(--input));
+  background-color: color-mix(in srgb, var(--popover) 96%, transparent);
 }
 
 .form-check:not(.form-switch)
@@ -968,24 +1128,48 @@ textarea.form-control {
   background: var(--primary-foreground);
   content: &quot;&quot;;
   mask: var(--checkmark-image) center / 12px 12px no-repeat;
+  background-color: var(--foreground);
+}
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:indeterminate::before {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 65%;
+  height: 6.65%;
+  margin: auto;
+  border-radius: var(--radius-full);
+  background: var(--foreground);
+  mask: none;
+  content: &quot;&quot;;
 }
 
 .form-check-input[type=&quot;radio&quot;] {
-  width: 14px;
-  height: 14px;
   border-radius: var(--radius-full);
+  width: 16px;
+  height: 16px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--input);
 }
 
 .form-check-input[type=&quot;radio&quot;]:checked {
-  border: 2px solid var(--primary);
-  background:
-    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
-    var(--primary);
+  border: 0;
+  background: radial-gradient(
+    circle,
+    var(--primary-foreground) 0 3px,
+    var(--foreground) 3px
+  );
+  box-shadow: none;
 }
 
 .form-check:not(.form-switch) .form-check-input:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
+}
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:focus-visible {
+  border-color: var(--ring);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
 }
 
 .form-check:not(.form-switch) .form-check-input:disabled {
@@ -995,6 +1179,12 @@ textarea.form-control {
 
 .form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
   cursor: not-allowed;
+}
+.form-check:not(.form-switch) .form-check-input[type=&quot;radio&quot;]:disabled,
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;radio&quot;]:disabled
+  + .form-check-label {
+  opacity: 0.5;
 }
 
 .form-switch .form-check-input:disabled,
@@ -1028,15 +1218,16 @@ textarea.form-control {
   box-sizing: border-box;
   border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
   border-radius: var(--radius-full);
-  background: light-dark(var(--primary-foreground), var(--foreground));
   box-shadow: var(--shadow-sm);
   content: &quot;&quot;;
   transform: translate(2px, -50%);
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  border-color: #fff;
+  background: #fff;
 }
 
 .form-switch .form-check-input:checked {
-  background: var(--primary);
+  background: var(--blue);
 }
 
 .form-switch .form-check-input:checked::before {
@@ -1045,49 +1236,54 @@ textarea.form-control {
 
 .form-switch .form-check-input:focus-visible {
   box-shadow: 0 0 0 2px var(--ring);
+  outline: none;
 }
 
 .form-range {
   appearance: none;
   display: block;
   width: 100%;
-  height: 28px;
   flex: 1;
   margin: 0;
   padding: 0;
-  outline: none;
   border: 0;
   accent-color: var(--primary);
-  background: linear-gradient(
-      color-mix(in srgb, var(--foreground) 7%, transparent),
-      color-mix(in srgb, var(--foreground) 7%, transparent)
-    )
-    center / 100% 2px no-repeat;
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  outline: none;
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  background: transparent;
 }
 
 .form-range::-webkit-slider-runnable-track {
-  height: 28px;
-  background: transparent;
+  background: var(--form-range-track, var(--border));
+  height: 2px;
+  border-radius: var(--radius-full);
 }
 
 .form-range::-webkit-slider-thumb {
   appearance: none;
   width: 20px;
   height: 20px;
-  margin-top: 4px;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  background: light-dark(var(--primary-foreground), var(--foreground));
+  margin-top: -9px;
+  border-color: transparent;
+  background: currentColor;
+  box-shadow: var(--shadow-sm);
 }
 
-.form-range:focus-visible::-webkit-slider-thumb {
-  border-color: var(--ring);
-  box-shadow: inset 0 0 0 1px var(--ring);
+/* Outline the native track and thumb, preserving the larger input hit area. */
+.form-range:focus-visible::-webkit-slider-runnable-track {
+  outline: 2px auto Highlight;
+  outline-color: -webkit-focus-ring-color;
 }
 
 .form-range::-moz-range-track {
-  height: 28px;
-  background: transparent;
+  background: var(--form-range-track, var(--border));
+  height: 2px;
+  border-radius: var(--radius-full);
 }
 
 .form-range::-moz-range-thumb {
@@ -1095,17 +1291,19 @@ textarea.form-control {
   height: 20px;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  background: light-dark(var(--primary-foreground), var(--foreground));
+  border-color: transparent;
+  background: currentColor;
+  box-shadow: var(--shadow-sm);
 }
 
 .form-range:focus-visible::-moz-range-thumb {
-  border-color: var(--ring);
-  box-shadow: inset 0 0 0 1px var(--ring);
+  outline: 2px solid Highlight;
+  outline-offset: 2px;
 }
 
 .form-range:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
+  opacity: 1;
+  cursor: default;
 }
 
 .btn:not(.btn-primary, .viz-tile):is(
@@ -1113,9 +1311,9 @@ textarea.form-control {
   [aria-selected=&quot;true&quot;],
   .is-selected
 ) {
-  border-color: var(--primary);
+  border-color: transparent;
   color: var(--primary-foreground);
-  background: var(--primary);
+  background: var(--blue);
 }
 
 .btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
@@ -1125,13 +1323,55 @@ textarea.form-control {
 
 .btn:focus-visible,
 .nav-link:focus-visible {
-  outline: 2px solid var(--ring);
   outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
 }
 
 .viz-carousel-controls :is(button, summary):focus-visible {
   outline: 2px solid var(--ring) !important;
   outline-offset: 2px !important;
+}
+
+/* Web recipes are the default, including on renderers without inline style queries. */
+@supports (border-radius: if(style(--corner-shape: round): 1px; else: 2px)) {
+  /* Match the host&#x27;s proportional text-sm scale at every text preference. */
+  .tooltip,
+  .viz-badge,
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    font-size: if(
+      style(--corner-shape: round): round(
+          nearest,
+          calc(var(--font-size-base) * 14 / 16),
+          1px
+        );
+        else: round(nearest, calc(var(--font-size-base) * 13 / 14), 1px)
+    );
+  }
+
+  .btn,
+  .nav-link,
+  .form-select {
+    border-radius: if(
+      style(--corner-shape: round): var(--radius-full); else: var(--radius-lg)
+    );
+  }
+
+  .form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+    border-radius: if(
+      style(--corner-shape: round): calc(var(--radius-sm) / 2);
+        else: calc(var(--radius-lg) * 0.4)
+    );
+  }
+
+  .tooltip {
+    font-weight: if(
+      style(--corner-shape: round): 600; else: var(--font-weight-normal)
+    );
+  }
 }
 
 @media (pointer: coarse) {
@@ -1153,7 +1393,28 @@ textarea.form-control {
   /* Keep small-screen WebKit from zooming when a text field receives focus. */
   .form-control,
   .form-select {
-    font-size: max(16px, var(--font-size-normal));
+    font-size: max(16px, calc(var(--font-size-base) * 14 / 16));
+    font-size: max(
+      16px,
+      round(nearest, calc(var(--font-size-base) * 14 / 16), 1px)
+    );
+  }
+  .form-control:is(
+    [type=&quot;file&quot;],
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;week&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;color&quot;]
+  ) {
+    height: 44px;
+    min-height: 44px;
+    font-size: max(16px, calc(var(--font-size-base) * 14 / 16));
+    font-size: max(
+      16px,
+      round(nearest, calc(var(--font-size-base) * 14 / 16), 1px)
+    );
   }
 
   .form-control[type=&quot;file&quot;]::file-selector-button {
@@ -1207,18 +1468,6 @@ textarea.form-control {
   .form-range {
     height: 44px;
     touch-action: pan-y;
-  }
-
-  .form-range::-webkit-slider-runnable-track {
-    height: 44px;
-  }
-
-  .form-range::-moz-range-track {
-    height: 44px;
-  }
-
-  .form-range::-webkit-slider-thumb {
-    margin-top: 12px;
   }
 }
 
@@ -1625,6 +1874,50 @@ html&gt;body{padding:0}&lt;/style&gt;
 #simon-marketing-proposal .sm-earnings { min-width:690px; }
 #simon-marketing-proposal .sm-payroll-table { min-width:850px; }
 #simon-marketing-proposal .sm-payment-table { min-width:620px; }
+#simon-marketing-proposal .sm-shell { position:relative; }
+#simon-marketing-proposal .sm-shell.sm-modal-open { min-height:760px; }
+#simon-marketing-proposal .sm-funding-menu { position:relative; }
+#simon-marketing-proposal .sm-funding-menu summary { color:var(--sm-onblue); list-style:none; }
+#simon-marketing-proposal .sm-funding-menu summary::-webkit-details-marker { display:none; }
+#simon-marketing-proposal .sm-funding-options { position:absolute; right:0; top:calc(100% + 6px); min-width:190px; z-index:3; padding:6px; border:1px solid var(--sm-line); border-radius:7px; background:var(--sm-bg); box-shadow:0 5px 15px light-dark(#16253a20,#0006); }
+#simon-marketing-proposal .sm-funding-options button { display:block; width:100%; border:0; text-align:left; }
+#simon-marketing-proposal .sm-funding-options button:hover { background:var(--sm-soft); }
+#simon-marketing-proposal .sm-side { grid-column:1; grid-row:1; }
+#simon-marketing-proposal .sm-workspace { grid-column:2; grid-row:1; }
+#simon-marketing-proposal [data-drawer-host] { grid-column:1/-1; grid-row:1; z-index:5; min-width:0; }
+#simon-marketing-proposal [data-drawer-host]:empty { display:none; }
+#simon-marketing-proposal .sm-drawer-overlay { position:relative; min-height:760px; height:100%; display:flex; justify-content:flex-end; background:light-dark(#11182755,#0008); }
+#simon-marketing-proposal .sm-drawer { background:var(--sm-bg); width:min(470px,100%); padding:26px; display:flex; flex-direction:column; gap:22px; box-shadow:-6px 0 20px light-dark(#16253a20,#0006); min-width:0; }
+#simon-marketing-proposal .sm-drawer .sm-heading { margin-bottom:4px; align-items:center; }
+#simon-marketing-proposal .sm-drawer .sm-heading h2 { margin:0; font-size:23px; }
+#simon-marketing-proposal .sm-drawer .sm-heading&gt;div:first-child { flex:1 1 200px; }
+#simon-marketing-proposal .sm-drawer label { font-size:15px; font-weight:500; }
+#simon-marketing-proposal .sm-drawer input { width:100%; font-weight:400; min-height:48px; }
+#simon-marketing-proposal .sm-readonly { border:1px solid var(--sm-line); border-radius:6px; padding:12px; background:var(--sm-soft); }
+#simon-marketing-proposal .sm-drawer-body { display:flex; flex-direction:column; gap:22px; }
+#simon-marketing-proposal .sm-drawer-footer { display:flex; gap:10px; justify-content:flex-end; margin-top:auto; border-top:1px solid var(--sm-line); padding-top:18px; }
+#simon-marketing-proposal .sm-required { color:var(--sm-error); }
+#simon-marketing-proposal .sm-transfer-table { min-width:900px; }
+#simon-marketing-proposal .sm-report-total { margin-top:4px; font-size:17px; font-weight:500; }
+#simon-marketing-proposal .sm-report-search { flex:2 1 240px!important; }
+#simon-marketing-proposal .sm-badge { display:inline-block; border:1px solid var(--sm-line); border-radius:5px; padding:3px 8px; font-size:12px; color:var(--sm-link); background:var(--sm-total); }
+#simon-marketing-proposal .sm-badge.sm-claimed { color:var(--sm-good); background:var(--sm-goodbg); }
+#simon-marketing-proposal .sm-pagination { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:flex-end; padding:16px; border-top:1px solid var(--sm-line); }
+#simon-marketing-proposal .sm-demo-interac { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+@media(max-width:480px) { #simon-marketing-proposal .sm-drawer { padding:22px 16px; } #simon-marketing-proposal .sm-drawer .sm-heading h2 { font-size:20px; } #simon-marketing-proposal .sm-drawer-footer { flex-wrap:wrap; } #simon-marketing-proposal .sm-drawer-footer button { flex:1 1 auto; } #simon-marketing-proposal .sm-funding-options { left:0; right:auto; } }
+#simon-marketing-proposal button.sm-nav { width:100%; border:0; background:transparent; color:inherit; font:inherit; font-size:11px; }
+#simon-marketing-proposal button.sm-nav.sm-active { background:#a71920; color:#fff; }
+#simon-marketing-proposal .sm-income { border:1px solid var(--sm-line); border-radius:14px; padding:24px; }
+#simon-marketing-proposal .sm-income h2 { font-size:24px; margin-bottom:22px; }
+#simon-marketing-proposal .sm-income-table { border:1px solid var(--sm-line); border-radius:8px; overflow:hidden; }
+#simon-marketing-proposal .sm-income table { font-size:16px; }
+#simon-marketing-proposal .sm-income th,#simon-marketing-proposal .sm-income td { padding:20px 24px; border-top:1px solid var(--sm-line); color:var(--sm-text); background:var(--sm-bg); font-weight:400; vertical-align:middle; }
+#simon-marketing-proposal .sm-income tr:first-child&gt;* { border-top:0; }
+#simon-marketing-proposal .sm-income .sm-income-total&gt;* { background:var(--sm-soft); font-weight:500; }
+#simon-marketing-proposal .sm-income .sm-income-detail&gt;* { font-size:14px; }
+#simon-marketing-proposal .sm-income .sm-income-detail th { padding-left:44px; }
+#simon-marketing-proposal .sm-income .sm-income-detail th::before { content:&#x27;↳&#x27;; margin-right:10px; color:var(--sm-muted); }
+@media(max-width:480px) { #simon-marketing-proposal .sm-income { padding:14px 10px; } #simon-marketing-proposal .sm-income h2 { font-size:20px; } #simon-marketing-proposal .sm-income table { font-size:14px; } #simon-marketing-proposal .sm-income th,#simon-marketing-proposal .sm-income td { padding:16px 10px; } #simon-marketing-proposal .sm-income .sm-income-detail th { padding-left:20px; } #simon-marketing-proposal .sm-income .sm-income-detail th::before { margin-right:5px; } }
 @media(max-width:760px) { #simon-marketing-proposal .sm-main { padding:22px 16px; } #simon-marketing-proposal .sm-grid { grid-template-columns:1fr; } #simon-marketing-proposal .sm-card-fields { grid-template-columns:1fr 1fr; } #simon-marketing-proposal .sm-card-fields .sm-field:first-child { grid-column:1/-1; } #simon-marketing-proposal .sm-demo { padding-right:16px; } }
 @media(max-width:480px) { #simon-marketing-proposal .sm-shell { grid-template-columns:47px minmax(0,1fr); } #simon-marketing-proposal .sm-side { padding:10px 2px; } #simon-marketing-proposal .sm-main { padding:20px 11px; } #simon-marketing-proposal .sm-top { justify-content:flex-start; padding:12px; gap:9px; } #simon-marketing-proposal .sm-profile { width:100%; } #simon-marketing-proposal .sm-context { padding:7px 10px; } #simon-marketing-proposal h1 { font-size:20px; } #simon-marketing-proposal .sm-metric { min-width:0; flex-basis:100%; } #simon-marketing-proposal .sm-fund-action { justify-content:flex-start; flex-basis:100%; } #simon-marketing-proposal .sm-button { min-height:44px; } #simon-marketing-proposal .sm-actions { width:100%; } #simon-marketing-proposal .sm-actions .sm-button { flex:1 1 100%; } #simon-marketing-proposal .sm-checkout { padding:16px 12px; } #simon-marketing-proposal .sm-tabs { gap:17px; } #simon-marketing-proposal .sm-group-body { padding:12px 8px; } #simon-marketing-proposal input,#simon-marketing-proposal textarea,#simon-marketing-proposal select { font-size:16px; } #simon-marketing-proposal .sm-demo label { min-width:0; width:100%; } #simon-marketing-proposal .sm-demo select { width:100%; } }
 &lt;/style&gt;
@@ -1632,18 +1925,22 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;div class=&quot;sm-demo&quot;&gt;
     &lt;div&gt;&lt;strong&gt;Marketing Management · Proposal&lt;/strong&gt;&lt;small&gt;Connected demo · Sample data · No real payments&lt;/small&gt;&lt;/div&gt;
     &lt;label&gt;Preview screen &lt;select data-screen aria-label=&quot;Preview screen&quot;&gt;
-      &lt;option value=&quot;funding&quot;&gt;OP · Marketing Management&lt;/option&gt;&lt;option value=&quot;checkout&quot;&gt;OP · Credit-card funding&lt;/option&gt;&lt;option value=&quot;payroll&quot;&gt;OP · Prepare Payroll / Marketing&lt;/option&gt;&lt;option value=&quot;bc&quot;&gt;BC · Review &amp; approve&lt;/option&gt;&lt;option value=&quot;ho&quot;&gt;HO · Payroll Summary&lt;/option&gt;&lt;option value=&quot;log&quot;&gt;OP · Marketing Management Log&lt;/option&gt;&lt;option value=&quot;marketer&quot;&gt;Marketer · My Marketing Earnings&lt;/option&gt;&lt;option value=&quot;caller&quot;&gt;Caller · My Calling Earnings&lt;/option&gt;
+      &lt;option value=&quot;funding&quot;&gt;OP · Marketing Management&lt;/option&gt;&lt;option value=&quot;checkout&quot;&gt;OP · Credit-card funding&lt;/option&gt;&lt;option value=&quot;payroll&quot;&gt;OP · Prepare Payroll / Marketing&lt;/option&gt;&lt;option value=&quot;bc&quot;&gt;BC · Review &amp; approve&lt;/option&gt;&lt;option value=&quot;ho&quot;&gt;HO · Payroll Summary&lt;/option&gt;&lt;option value=&quot;log&quot;&gt;OP · Marketing Management Log&lt;/option&gt;&lt;option value=&quot;marketer&quot;&gt;Marketer · My Marketing Earnings&lt;/option&gt;&lt;option value=&quot;caller&quot;&gt;Caller · My Calling Earnings&lt;/option&gt;&lt;option value=&quot;profit&quot;&gt;OP · Profit / Marketing Expense&lt;/option&gt;&lt;option value=&quot;report&quot;&gt;Admin · E-Transfer Report&lt;/option&gt;
     &lt;/select&gt;&lt;/label&gt;
+    &lt;div class=&quot;sm-demo-interac&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;sm-button&quot; data-action=&quot;receive-interac&quot;&gt;Receive sample Interac notification&lt;/button&gt;&lt;small&gt;Demo only · Cameron Roach / $250.00 is already received and unclaimed.&lt;/small&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;sm-live&quot; role=&quot;status&quot; aria-live=&quot;polite&quot; data-live&gt;&lt;/div&gt;
   &lt;div class=&quot;sm-shell&quot;&gt;
-    &lt;aside class=&quot;sm-side&quot; aria-label=&quot;SIMON navigation&quot;&gt;&lt;div class=&quot;sm-logo&quot;&gt;S&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Dashboard&lt;/div&gt;&lt;div class=&quot;sm-nav&quot; data-side-sales&gt;Sales&lt;/div&gt;&lt;div class=&quot;sm-nav&quot; data-side-production&gt;Production&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Calendar&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Stats&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Team&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Resources&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Season&lt;/div&gt;&lt;/aside&gt;
+    &lt;aside class=&quot;sm-side&quot; aria-label=&quot;SIMON navigation&quot;&gt;&lt;div class=&quot;sm-logo&quot;&gt;S&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Dashboard&lt;/div&gt;&lt;div class=&quot;sm-nav&quot; data-side-sales&gt;Sales&lt;/div&gt;&lt;div class=&quot;sm-nav&quot; data-side-production&gt;Production&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Calendar&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Stats&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;sm-nav&quot; data-side-profit data-action=&quot;profit&quot;&gt;Profit&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;sm-nav&quot; data-side-admin data-action=&quot;report&quot;&gt;Admin&lt;/button&gt;&lt;div class=&quot;sm-nav&quot;&gt;Team&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Resources&lt;/div&gt;&lt;div class=&quot;sm-nav&quot;&gt;Season&lt;/div&gt;&lt;/aside&gt;
     &lt;div class=&quot;sm-workspace&quot;&gt;
       &lt;header class=&quot;sm-top&quot;&gt;&lt;span class=&quot;sm-context&quot;&gt;Painting&lt;/span&gt;&lt;span class=&quot;sm-context&quot;&gt;2026&lt;/span&gt;&lt;span class=&quot;sm-profile&quot;&gt;&lt;span class=&quot;sm-avatar&quot; data-avatar&gt;CR&lt;/span&gt;&lt;span&gt;&lt;span data-profile&gt;Cameron Roach&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;sm-muted&quot; data-role&gt;Operator&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/header&gt;
       &lt;main class=&quot;sm-main&quot; data-main&gt;&lt;/main&gt;
     &lt;/div&gt;
+    &lt;div data-drawer-host&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;sm-notes&quot;&gt;&lt;details&gt;&lt;summary&gt;Proposal notes &amp; client confirmations&lt;/summary&gt;
+    &lt;p&gt;&lt;strong&gt;E-transfer proposal:&lt;/strong&gt; An Interac deposit confirmation creates an Unclaimed Marketing transfer. OP claims with the bank-transfer sender name and amount; a unique eligible match adds credits once and marks the transfer Claimed. The report separates Client Payment from Operator Payment. This demo uses immediate credit release; &lt;strong&gt;BC funding approval still requires client confirmation.&lt;/strong&gt; Bank reconciliation is not a prerequisite. Notification import is simulated, not connected to Interac.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Profit layout:&lt;/strong&gt; Marketing Expense is a detail included in Fixed Expenses. It reduces Net Profit, not Gross Profit, and is not deducted twice. The zero-value preview is not linked to funding or batch posting; expense-recognition timing and journal mapping await Nat / Maria.&lt;/p&gt;
     &lt;ul&gt;&lt;li&gt;&lt;strong&gt;Confirmed:&lt;/strong&gt; Credit cards load reusable Marketing credits, separately from payroll. Marketers use leads × rate per lead; callers use conversions × rate per conversion. OP enters the final amount.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Confirmed:&lt;/strong&gt; The combined payroll Marketing total shares one OP credit balance. Submission reserves credits; BC approves without editing; HO reviews without editing and posting consumes the reservation once.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Confirm with Louis:&lt;/strong&gt; Should the employee Payment Log update when HO posts the batch? This demo uses that trigger. A posted amount is not proof of an employee bank deposit.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Confirm with Louis:&lt;/strong&gt; Track payments only per employee and payroll period, with no allocation to individual calling dates or marketing sessions? This demo keeps work and payment records separate.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Open — Nat / Maria:&lt;/strong&gt; Credit liability GL, funding journal, expense/payroll journals, reconciliation, ADP mapping, burden and payment execution. Posting hands off to accounting; this demo does not create journals or export Marketing to ADP.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Open — Louis:&lt;/strong&gt; Final rules for lead/conversion attribution, payroll cutoffs, rate changes, and corrections. Sample results and rates are illustrative, not integration rules.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Open:&lt;/strong&gt; Credit-release rules for rejection, withdrawal, or correction after submission. No such process is invented here.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Scope:&lt;/strong&gt; Operational proposal only. Existing full-payroll validation and batch-post eligibility remain in force; demo actions simulate the Marketing segment. Advertising spend is a separate flow.&lt;/li&gt;&lt;/ul&gt;
     &lt;button class=&quot;sm-button&quot; type=&quot;button&quot; data-reset&gt;Reset demo data&lt;/button&gt;
   &lt;/details&gt;&lt;/div&gt;
@@ -1655,9 +1952,15 @@ html&gt;body{padding:0}&lt;/style&gt;
   // Sample data boundary: no API calls or real card processing.
   const EMP=[{id:&#x27;alice&#x27;,name:&#x27;Alice Johnson&#x27;,role:&#x27;Marketer&#x27;,unit:&#x27;lead&#x27;,count:18,rate:2000},{id:&#x27;michael&#x27;,name:&#x27;Michael Lee&#x27;,role:&#x27;Caller&#x27;,unit:&#x27;conversion&#x27;,count:8,rate:2500}];
   const WORK=[{id:&#x27;a1&#x27;,employee:&#x27;alice&#x27;,date:&#x27;2026-10-06&#x27;,session:&#x27;Door knocking · Oak Street&#x27;,hours:4,units:6},{id:&#x27;a2&#x27;,employee:&#x27;alice&#x27;,date:&#x27;2026-10-09&#x27;,session:&#x27;Door knocking · Maple Avenue&#x27;,hours:3.5,units:5},{id:&#x27;a3&#x27;,employee:&#x27;alice&#x27;,date:&#x27;2026-10-15&#x27;,session:&#x27;Door knocking · Pine Street&#x27;,hours:4.5,units:7},{id:&#x27;m1&#x27;,employee:&#x27;michael&#x27;,date:&#x27;2026-10-07&#x27;,session:&#x27;Calling&#x27;,hours:2,units:3},{id:&#x27;m2&#x27;,employee:&#x27;michael&#x27;,date:&#x27;2026-10-12&#x27;,session:&#x27;Calling&#x27;,hours:2.5,units:2},{id:&#x27;m3&#x27;,employee:&#x27;michael&#x27;,date:&#x27;2026-10-16&#x27;,session:&#x27;Calling&#x27;,hours:2,units:3}];
-  const SCREENS=[&#x27;funding&#x27;,&#x27;checkout&#x27;,&#x27;payroll&#x27;,&#x27;bc&#x27;,&#x27;ho&#x27;,&#x27;log&#x27;,&#x27;marketer&#x27;,&#x27;caller&#x27;];
-  const fresh=()=&gt;({version:1,screen:&#x27;funding&#x27;,balance:60000,reserved:0,phase:&#x27;draft&#x27;,amounts:[&#x27;360.00&#x27;,&#x27;200.00&#x27;],notes:[&#x27;&#x27;,&#x27;&#x27;],snapshot:null,fundings:[{date:&#x27;Oct 12, 2026&#x27;,amount:50000,ref:&#x27;DEMO-FUND-002&#x27;},{date:&#x27;Sep 28, 2026&#x27;,amount:30000,ref:&#x27;DEMO-FUND-001&#x27;}],fundAmount:&#x27;500.00&#x27;,fundResult:&#x27;&#x27;,filters:{employee:&#x27;all&#x27;,role:&#x27;all&#x27;,from:&#x27;2026-10-05&#x27;,to:&#x27;2026-10-18&#x27;,period:&#x27;all&#x27;},section:&#x27;marketing&#x27;,fundTab:&#x27;management&#x27;});
+  const SCREENS=[&#x27;funding&#x27;,&#x27;checkout&#x27;,&#x27;payroll&#x27;,&#x27;bc&#x27;,&#x27;ho&#x27;,&#x27;log&#x27;,&#x27;marketer&#x27;,&#x27;caller&#x27;,&#x27;profit&#x27;,&#x27;report&#x27;];
+  const receivedTransfers=()=&gt;[
+    {id:&#x27;DEMO-MKT-001&#x27;,channel:&#x27;operator&#x27;,mailbox:&#x27;marketing@studentworks.com&#x27;,date:&#x27;2026-10-22&#x27;,name:&#x27;Cameron Roach&#x27;,email:&#x27;cameron@example.test&#x27;,ref:&#x27;E-TRANSFER MKT001&#x27;,amount:25000,status:&#x27;Unclaimed&#x27;,operator:&#x27;&#x27;,invoice:&#x27;&#x27;},
+    {id:&#x27;DEMO-MKT-002&#x27;,channel:&#x27;operator&#x27;,mailbox:&#x27;marketing@studentworks.com&#x27;,date:&#x27;2026-10-22&#x27;,name:&#x27;Roach Painting&#x27;,email:&#x27;business@example.test&#x27;,ref:&#x27;E-TRANSFER MKT002&#x27;,amount:15000,status:&#x27;Unclaimed&#x27;,operator:&#x27;&#x27;,invoice:&#x27;&#x27;},
+    {id:&#x27;DEMO-CLIENT-001&#x27;,channel:&#x27;client&#x27;,mailbox:&#x27;pay@studentworks.com&#x27;,date:&#x27;2026-06-26&#x27;,name:&#x27;Linh&#x27;,email:&#x27;&#x27;,ref:&#x27;E-TRANSFER ***CKj&#x27;,amount:20009,status:&#x27;Unclaimed&#x27;,operator:&#x27;&#x27;,invoice:&#x27;&#x27;}
+  ];
+  const fresh=()=&gt;({version:2,screen:&#x27;funding&#x27;,balance:60000,reserved:0,phase:&#x27;draft&#x27;,amounts:[&#x27;360.00&#x27;,&#x27;200.00&#x27;],notes:[&#x27;&#x27;,&#x27;&#x27;],snapshot:null,fundings:[{date:&#x27;Oct 12, 2026&#x27;,method:&#x27;Credit card&#x27;,amount:50000,ref:&#x27;DEMO-FUND-002&#x27;},{date:&#x27;Sep 28, 2026&#x27;,method:&#x27;Credit card&#x27;,amount:30000,ref:&#x27;DEMO-FUND-001&#x27;}],fundAmount:&#x27;500.00&#x27;,fundResult:&#x27;&#x27;,filters:{employee:&#x27;all&#x27;,role:&#x27;all&#x27;,from:&#x27;2026-10-05&#x27;,to:&#x27;2026-10-18&#x27;,period:&#x27;all&#x27;},section:&#x27;marketing&#x27;,fundTab:&#x27;management&#x27;,transfers:receivedTransfers(),reportTab:&#x27;client&#x27;,reportFilters:{query:&#x27;&#x27;,from:&#x27;2026-02-02&#x27;,to:&#x27;2026-10-22&#x27;,status:&#x27;all&#x27;,min:&#x27;&#x27;,max:&#x27;&#x27;}});
   let state=fresh(), message=&#x27;&#x27;, error=&#x27;&#x27;, busy=false;
+  let drawerOpen=false, drawerName=&#x27;&#x27;, drawerAmount=&#x27;&#x27;, drawerError=&#x27;&#x27;;
   const sessionId=&#x27;marketing-demo-&#x27;+Date.now()+&#x27;-&#x27;+Math.random().toString(36).slice(2);
   const cash=n=&gt;new Intl.NumberFormat(&#x27;en-CA&#x27;,{style:&#x27;currency&#x27;,currency:&#x27;CAD&#x27;}).format(n/100);
   const esc=v=&gt;String(v??&#x27;&#x27;).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));
@@ -1678,16 +1981,46 @@ html&gt;body{padding:0}&lt;/style&gt;
     // active checkout, clear transient test fields, or move an input caret.
     if(saved?.privateContent?.sessionId===sessionId)return;
     const s=saved?.privateContent?.state;
-    if(saved?.privateContent?.kind!==&#x27;simon-marketing-proposal&#x27;||s?.version!==1||!SCREENS.includes(s.screen)||![&#x27;draft&#x27;,&#x27;submitted&#x27;,&#x27;approved&#x27;,&#x27;posted&#x27;].includes(s.phase))return;
+    if(saved?.privateContent?.kind!==&#x27;simon-marketing-proposal&#x27;||![1,2].includes(s?.version)||!SCREENS.includes(s.screen)||![&#x27;draft&#x27;,&#x27;submitted&#x27;,&#x27;approved&#x27;,&#x27;posted&#x27;].includes(s.phase))return;
     if(!Number.isSafeInteger(s.balance)||!Number.isSafeInteger(s.reserved)||s.reserved&lt;0||s.balance&lt;s.reserved||!Array.isArray(s.amounts)||s.amounts.length!==2||!Array.isArray(s.notes)||s.notes.length!==2||!Array.isArray(s.fundings)||s.fundings.length&gt;30)return;
     if(s.phase!==&#x27;draft&#x27;&amp;&amp;(!s.snapshot||!Array.isArray(s.snapshot.rows)||s.snapshot.rows.length!==2||!Number.isSafeInteger(s.snapshot.total)))return;
-    state={...fresh(),...s,filters:{...fresh().filters,...s.filters}}; render();
+    if(s.version===2&amp;&amp;(!Array.isArray(s.transfers)||s.transfers.length&gt;25||s.transfers.some(t=&gt;![&#x27;client&#x27;,&#x27;operator&#x27;].includes(t.channel)||![&#x27;Unclaimed&#x27;,&#x27;Claimed&#x27;,&#x27;Archived&#x27;].includes(t.status)||!Number.isSafeInteger(t.amount)||t.amount&lt;=0)))return;
+    state={...fresh(),...s,version:2,filters:{...fresh().filters,...s.filters},reportFilters:{...fresh().reportFilters,...s.reportFilters}};drawerOpen=false;render();
   }
-  function navigate(screen){if(busy)return;state.screen=screen;state.fundResult=&#x27;&#x27;;message=&#x27;&#x27;;error=&#x27;&#x27;;render();root.scrollIntoView({block:&#x27;start&#x27;});save();}
+  function navigate(screen){if(busy)return;drawerOpen=false;state.screen=screen;state.fundResult=&#x27;&#x27;;message=&#x27;&#x27;;error=&#x27;&#x27;;render();root.scrollIntoView({block:&#x27;start&#x27;});save();}
   function heading(title,crumb,actions=&#x27;&#x27;){return `&lt;div class=&quot;sm-heading&quot;&gt;&lt;div&gt;&lt;div class=&quot;sm-breadcrumb&quot;&gt;${crumb}&lt;/div&gt;&lt;h1&gt;${title}&lt;/h1&gt;&lt;/div&gt;&lt;div class=&quot;sm-actions&quot;&gt;${actions}&lt;/div&gt;&lt;/div&gt;`;}
-  function tabs(list,selected,key){return `&lt;div class=&quot;sm-tabs&quot; role=&quot;tablist&quot; aria-label=&quot;${key===&#x27;fund-tab&#x27;?&#x27;Marketing views&#x27;:&#x27;Payroll sections&#x27;}&quot;&gt;${list.map(([id,label])=&gt;`&lt;button class=&quot;sm-tab&quot; type=&quot;button&quot; role=&quot;tab&quot; id=&quot;sm-${key}-${id}&quot; aria-selected=&quot;${id===selected}&quot; aria-controls=&quot;sm-${key}-panel&quot; data-${key}=&quot;${id}&quot;&gt;${label}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;}
-  function balanceCards(action=true){return `&lt;div class=&quot;sm-metrics&quot;&gt;&lt;div class=&quot;sm-metric&quot;&gt;&lt;span&gt;Available Marketing credits · CAD&lt;/span&gt;&lt;div class=&quot;sm-value&quot; data-available&gt;${cash(available())}&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;sm-metric&quot;&gt;&lt;span&gt;Reserved for submitted payroll · CAD&lt;/span&gt;&lt;div class=&quot;sm-value&quot; data-reserved&gt;${cash(state.reserved)}&lt;/div&gt;&lt;/div&gt;${action?`&lt;div class=&quot;sm-fund-action&quot;&gt;${btn(&#x27;Add Funding by Credit Card&#x27;,&#x27;checkout&#x27;,true)}&lt;/div&gt;`:&#x27;&#x27;}&lt;/div&gt;`;}
-  function funding(){return heading(&#x27;Marketing Management&#x27;,&#x27;Sales &amp;gt; Marketing&#x27;,btn(&#x27;Prepare Payroll&#x27;,&#x27;payroll&#x27;))+tabs([[&#x27;sessions&#x27;,&#x27;Marketing Session&#x27;],[&#x27;management&#x27;,&#x27;Marketing Management&#x27;]],state.fundTab,&#x27;fund-tab&#x27;)+`&lt;section role=&quot;tabpanel&quot; id=&quot;sm-fund-tab-panel&quot; aria-labelledby=&quot;sm-fund-tab-${state.fundTab}&quot;&gt;${state.fundTab===&#x27;sessions&#x27;?sessionView():balanceCards()+notice(&#x27;Load credits anytime to fund Marketing payroll and future ad spend. Card funding does not pay employees directly.&#x27;)+`&lt;div class=&quot;sm-heading&quot;&gt;&lt;h2&gt;Funding history&lt;/h2&gt;${btn(&#x27;View Marketing Management Log&#x27;,&#x27;log&#x27;)}&lt;/div&gt;&lt;div class=&quot;sm-table-wrap&quot;&gt;&lt;table aria-label=&quot;Funding history&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;Method&lt;/th&gt;&lt;th&gt;Transaction reference&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Amount (CAD)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${state.fundings.map(f=&gt;`&lt;tr&gt;&lt;td&gt;${esc(f.date)}&lt;/td&gt;&lt;td&gt;Credit card&lt;/td&gt;&lt;td&gt;${esc(f.ref)}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(f.amount)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;`}&lt;/section&gt;`;}
+  function tabs(list,selected,key){return `&lt;div class=&quot;sm-tabs&quot; role=&quot;tablist&quot; aria-label=&quot;${key===&#x27;fund-tab&#x27;?&#x27;Marketing views&#x27;:key===&#x27;report-tab&#x27;?&#x27;E-Transfer payment types&#x27;:&#x27;Payroll sections&#x27;}&quot;&gt;${list.map(([id,label])=&gt;`&lt;button class=&quot;sm-tab&quot; type=&quot;button&quot; role=&quot;tab&quot; id=&quot;sm-${key}-${id}&quot; aria-selected=&quot;${id===selected}&quot; aria-controls=&quot;sm-${key}-panel&quot; data-${key}=&quot;${id}&quot;&gt;${label}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;}
+  function balanceCards(action=true){return `&lt;div class=&quot;sm-metrics&quot;&gt;&lt;div class=&quot;sm-metric&quot;&gt;&lt;span&gt;Available Marketing credits · CAD&lt;/span&gt;&lt;div class=&quot;sm-value&quot; data-available&gt;${cash(available())}&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;sm-metric&quot;&gt;&lt;span&gt;Reserved for submitted payroll · CAD&lt;/span&gt;&lt;div class=&quot;sm-value&quot; data-reserved&gt;${cash(state.reserved)}&lt;/div&gt;&lt;/div&gt;${action?`&lt;div class=&quot;sm-fund-action&quot;&gt;&lt;details class=&quot;sm-funding-menu&quot;&gt;&lt;summary class=&quot;sm-button sm-primary&quot;&gt;Add Funding ▾&lt;/summary&gt;&lt;div class=&quot;sm-funding-options&quot;&gt;${btn(&#x27;Credit Card&#x27;,&#x27;checkout&#x27;)}${btn(&#x27;E-Transfer&#x27;,&#x27;open-etransfer&#x27;)}&lt;/div&gt;&lt;/details&gt;&lt;/div&gt;`:&#x27;&#x27;}&lt;/div&gt;`;}
+  function funding(){return heading(&#x27;Marketing Management&#x27;,&#x27;Sales &amp;gt; Marketing&#x27;,btn(&#x27;Prepare Payroll&#x27;,&#x27;payroll&#x27;))+tabs([[&#x27;sessions&#x27;,&#x27;Marketing Session&#x27;],[&#x27;management&#x27;,&#x27;Marketing Management&#x27;]],state.fundTab,&#x27;fund-tab&#x27;)+`&lt;section role=&quot;tabpanel&quot; id=&quot;sm-fund-tab-panel&quot; aria-labelledby=&quot;sm-fund-tab-${state.fundTab}&quot;&gt;${state.fundTab===&#x27;sessions&#x27;?sessionView():balanceCards()+notice(&#x27;Load credits anytime by credit card or E-Transfer to fund Marketing payroll and future ad spend. Funding does not pay employees directly.&#x27;)+`&lt;div class=&quot;sm-heading&quot;&gt;&lt;h2&gt;Funding history&lt;/h2&gt;${btn(&#x27;View Marketing Management Log&#x27;,&#x27;log&#x27;)}&lt;/div&gt;&lt;div class=&quot;sm-table-wrap&quot;&gt;&lt;table aria-label=&quot;Funding history&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;Method&lt;/th&gt;&lt;th&gt;Transaction reference&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Amount (CAD)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${state.fundings.map(f=&gt;`&lt;tr&gt;&lt;td&gt;${esc(f.date)}&lt;/td&gt;&lt;td&gt;${esc(f.method||&#x27;Credit card&#x27;)}&lt;/td&gt;&lt;td&gt;${esc(f.ref)}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(f.amount)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;`}&lt;/section&gt;`;}
+  function drawFundingDrawer(){
+    q(&#x27;.sm-shell&#x27;).classList.toggle(&#x27;sm-modal-open&#x27;,drawerOpen);
+    [&#x27;.sm-workspace&#x27;,&#x27;.sm-side&#x27;,&#x27;.sm-demo&#x27;,&#x27;.sm-notes&#x27;].forEach(s=&gt;q(s).inert=drawerOpen);
+    q(&#x27;[data-drawer-host]&#x27;).innerHTML=drawerOpen?`&lt;div class=&quot;sm-drawer-overlay&quot;&gt;&lt;section class=&quot;sm-drawer&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;sm-drawer-title&quot;&gt;&lt;div class=&quot;sm-heading&quot;&gt;&lt;h2 id=&quot;sm-drawer-title&quot;&gt;Add funding&lt;/h2&gt;${btn(&#x27;Close&#x27;,&#x27;close-etransfer&#x27;)}&lt;/div&gt;&lt;div class=&quot;sm-drawer-body&quot;&gt;&lt;div class=&quot;sm-field&quot;&gt;&lt;span&gt;Payment method&lt;/span&gt;&lt;div class=&quot;sm-readonly&quot;&gt;E-Transfer&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;sm-notice&quot;&gt;Send your Marketing funding to &lt;strong&gt;marketing@studentworks.com&lt;/strong&gt;. After the transfer is received, enter the sender name shown on your bank transfer and the exact amount.&lt;/div&gt;&lt;label class=&quot;sm-field&quot;&gt;Bank transfer sender name &lt;span class=&quot;sm-required&quot;&gt;Required&lt;/span&gt;&lt;input data-transfer-name aria-label=&quot;Bank transfer sender name&quot; maxlength=&quot;100&quot; list=&quot;sm-transfer-names&quot; value=&quot;${esc(drawerName)}&quot; autocomplete=&quot;off&quot; required&gt;&lt;/label&gt;&lt;datalist id=&quot;sm-transfer-names&quot;&gt;${[...new Set(state.transfers.filter(t=&gt;t.channel===&#x27;operator&#x27;&amp;&amp;t.mailbox===&#x27;marketing@studentworks.com&#x27;&amp;&amp;t.status===&#x27;Unclaimed&#x27;).map(t=&gt;t.name))].map(n=&gt;`&lt;option value=&quot;${esc(n)}&quot;&gt;&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/datalist&gt;&lt;span class=&quot;sm-small sm-muted&quot;&gt;Use the bank sender name, even if it differs from your SIMON profile name. Only received, unclaimed Marketing transfers can be matched.&lt;/span&gt;&lt;label class=&quot;sm-field&quot;&gt;Amount transferred (CAD) &lt;span class=&quot;sm-required&quot;&gt;Required&lt;/span&gt;&lt;input data-transfer-amount aria-label=&quot;Amount transferred (CAD)&quot; inputmode=&quot;decimal&quot; value=&quot;${esc(drawerAmount)}&quot; required&gt;&lt;/label&gt;&lt;div data-transfer-error role=&quot;alert&quot; class=&quot;sm-notice sm-error&quot;${drawerError?&#x27;&#x27;:&#x27; hidden&#x27;}&gt;${esc(drawerError)}&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;sm-drawer-footer&quot;&gt;${btn(&#x27;Cancel&#x27;,&#x27;close-etransfer&#x27;)}${btn(&#x27;Add Funding&#x27;,&#x27;claim-etransfer&#x27;,true)}&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;`:&#x27;&#x27;;
+  }
+  function closeTransfer(){drawerOpen=false;drawFundingDrawer();q(&#x27;.sm-funding-menu summary&#x27;)?.focus();}
+  function transferFailure(text){drawerError=text;const el=q(&#x27;[data-transfer-error]&#x27;);el.hidden=false;el.textContent=text;}
+  function claimTransfer(){
+    const amount=cents(drawerAmount),name=drawerName.trim();
+    if(!name||amount===null||amount&lt;=0){transferFailure(&#x27;Enter the bank transfer sender name and an amount greater than $0.00, with no more than two decimal places.&#x27;);return;}
+    const matches=state.transfers.filter(t=&gt;t.channel===&#x27;operator&#x27;&amp;&amp;t.mailbox===&#x27;marketing@studentworks.com&#x27;&amp;&amp;t.status===&#x27;Unclaimed&#x27;&amp;&amp;t.name.trim()===name&amp;&amp;t.amount===amount);
+    if(matches.length===0){transferFailure(&#x27;No unclaimed Marketing E-Transfer matches this sender name and amount. Check your details and confirm the transfer was sent to marketing@studentworks.com and has been received. No credits were added.&#x27;);return;}
+    if(matches.length!==1){transferFailure(&#x27;More than one transfer matches these details. Contact support to identify the correct transfer. No credits were added.&#x27;);return;}
+    const transfer=matches[0];
+    if(state.fundings.some(f=&gt;f.transferId===transfer.id)){transferFailure(&#x27;This transfer has already funded the account. No additional credits were added.&#x27;);return;}
+    if(state.fundings.length&gt;=30){transferFailure(&#x27;Demo history is full. Reset demo data to continue testing.&#x27;);return;}
+    transfer.status=&#x27;Claimed&#x27;;transfer.operator=&#x27;Cameron Roach&#x27;;state.balance+=amount;
+    state.fundings.unshift({date:&#x27;Oct 22, 2026&#x27;,method:&#x27;E-Transfer&#x27;,amount,ref:transfer.ref,transferId:transfer.id});
+    drawerOpen=false;state.screen=&#x27;funding&#x27;;state.fundTab=&#x27;management&#x27;;message=`${cash(amount)} added to your Marketing credits. E-Transfer ${transfer.ref} is now Claimed.`;render();save();q(&#x27;.sm-funding-menu summary&#x27;)?.focus();
+  }
+  function reportIssue(){const f=state.reportFilters;if(f.from&amp;&amp;f.to&amp;&amp;f.from&gt;f.to)return &#x27;Start date must be on or before end date.&#x27;;const min=f.min===&#x27;&#x27;?0:cents(f.min),max=f.max===&#x27;&#x27;?null:cents(f.max);if(min===null||(f.max!==&#x27;&#x27;&amp;&amp;max===null))return &#x27;Enter valid amount filters with up to two decimal places.&#x27;;if(max!==null&amp;&amp;min&gt;max)return &#x27;Minimum amount must not exceed maximum amount.&#x27;;return &#x27;&#x27;;}
+  function reportRows(){
+    if(reportIssue())return [];
+    const f=state.reportFilters,query=f.query.trim().toLowerCase(),min=f.min===&#x27;&#x27;?0:cents(f.min),max=f.max===&#x27;&#x27;?Infinity:cents(f.max);
+    return state.transfers.filter(t=&gt;t.channel===state.reportTab&amp;&amp;(!f.from||t.date&gt;=f.from)&amp;&amp;(!f.to||t.date&lt;=f.to)&amp;&amp;(f.status===&#x27;all&#x27;||t.status===f.status)&amp;&amp;t.amount&gt;=min&amp;&amp;t.amount&lt;=max&amp;&amp;(!query||[t.name,t.ref,t.email].some(v=&gt;v.toLowerCase().includes(query))));
+  }
+  function reportResults(){const rows=reportRows(),operator=state.reportTab===&#x27;operator&#x27;,cols=operator?7:9;return `${reportIssue()?notice(esc(reportIssue()),&#x27;sm-error&#x27;):&#x27;&#x27;}&lt;div class=&quot;sm-table-wrap&quot;&gt;&lt;table class=&quot;sm-transfer-table&quot; aria-label=&quot;${operator?&#x27;Operator&#x27;:&#x27;Client&#x27;} E-Transfer payments&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;${operator?&#x27;Sender Name&#x27;:&#x27;Name&#x27;}&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;th&gt;Reference No.&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Amount (CAD)&lt;/th&gt;${operator?&#x27;&#x27;:&#x27;&lt;th&gt;Invoice No.&lt;/th&gt;&#x27;}&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Operator&lt;/th&gt;${operator?&#x27;&#x27;:&#x27;&lt;th&gt;Action&lt;/th&gt;&#x27;}&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${rows.length?rows.map(t=&gt;`&lt;tr&gt;&lt;td&gt;${esc(date(t.date))}&lt;/td&gt;&lt;td&gt;${esc(t.name)}&lt;/td&gt;&lt;td&gt;${esc(t.email||&#x27;—&#x27;)}&lt;/td&gt;&lt;td&gt;${esc(t.ref)}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(t.amount)}&lt;/td&gt;${operator?&#x27;&#x27;:`&lt;td&gt;${esc(t.invoice||&#x27;—&#x27;)}&lt;/td&gt;`}&lt;td&gt;&lt;span class=&quot;sm-badge${t.status===&#x27;Claimed&#x27;?&#x27; sm-claimed&#x27;:&#x27;&#x27;}&quot;&gt;${esc(t.status)}&lt;/span&gt;&lt;/td&gt;&lt;td&gt;${esc(t.operator||&#x27;—&#x27;)}&lt;/td&gt;${operator?&#x27;&#x27;:&#x27;&lt;td&gt;—&lt;/td&gt;&#x27;}&lt;/tr&gt;`).join(&#x27;&#x27;):`&lt;tr&gt;&lt;td class=&quot;sm-empty&quot; colspan=&quot;${cols}&quot;&gt;No payments match your filters&lt;/td&gt;&lt;/tr&gt;`}&lt;/tbody&gt;&lt;/table&gt;&lt;div class=&quot;sm-pagination&quot;&gt;&lt;span&gt;${rows.length?`1–${rows.length}`:&#x27;0&#x27;} of ${rows.length}&lt;/span&gt;&lt;span&gt;50 per page&lt;/span&gt;${btn(&#x27;Previous&#x27;,&#x27;report-prev&#x27;,false,true)}${btn(&#x27;Next&#x27;,&#x27;report-next&#x27;,false,true)}&lt;/div&gt;&lt;/div&gt;`;}
+  function report(){const f=state.reportFilters;return `&lt;div class=&quot;sm-heading&quot;&gt;&lt;div&gt;&lt;div class=&quot;sm-breadcrumb&quot;&gt;Admin &amp;gt; E-Transfer Report&lt;/div&gt;&lt;h1&gt;E-Transfer Report&lt;/h1&gt;&lt;div class=&quot;sm-report-total&quot;&gt;Total Amount: &lt;span data-report-total&gt;${cash(reportRows().reduce((sum,t)=&gt;sum+t.amount,0))}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;sm-actions&quot;&gt;${btn(&#x27;Download Report&#x27;,&#x27;download-transfers&#x27;,true)}&lt;/div&gt;&lt;/div&gt;`+tabs([[&#x27;client&#x27;,&#x27;Client Payment&#x27;],[&#x27;operator&#x27;,&#x27;Operator Payment&#x27;]],state.reportTab,&#x27;report-tab&#x27;)+`&lt;section role=&quot;tabpanel&quot; id=&quot;sm-report-tab-panel&quot; aria-labelledby=&quot;sm-report-tab-${state.reportTab}&quot;&gt;&lt;div class=&quot;sm-filters&quot;&gt;&lt;label class=&quot;sm-field sm-report-search&quot;&gt;Search&lt;input data-report-filter=&quot;query&quot; aria-label=&quot;Search name, reference or email&quot; placeholder=&quot;Search name, reference or email&quot; value=&quot;${esc(f.query)}&quot;&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;From&lt;input type=&quot;date&quot; data-report-filter=&quot;from&quot; value=&quot;${esc(f.from)}&quot;&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;To&lt;input type=&quot;date&quot; data-report-filter=&quot;to&quot; value=&quot;${esc(f.to)}&quot;&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;Status&lt;select data-report-filter=&quot;status&quot;&gt;${[&#x27;all&#x27;,&#x27;Unclaimed&#x27;,&#x27;Claimed&#x27;,&#x27;Archived&#x27;].map(s=&gt;`&lt;option value=&quot;${s}&quot;${s===f.status?&#x27; selected&#x27;:&#x27;&#x27;}&gt;${s===&#x27;all&#x27;?&#x27;All statuses&#x27;:s}&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/select&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;Minimum amount (CAD)&lt;input inputmode=&quot;decimal&quot; data-report-filter=&quot;min&quot; value=&quot;${esc(f.min)}&quot; placeholder=&quot;0.00&quot;&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;Maximum amount (CAD)&lt;input inputmode=&quot;decimal&quot; data-report-filter=&quot;max&quot; value=&quot;${esc(f.max)}&quot; placeholder=&quot;Any amount&quot;&gt;&lt;/label&gt;&lt;/div&gt;&lt;div data-report-results&gt;${reportResults()}&lt;/div&gt;&lt;/section&gt;`;}
+  function updateReport(){q(&#x27;[data-report-results]&#x27;).innerHTML=reportResults();q(&#x27;[data-report-total]&#x27;).textContent=cash(reportRows().reduce((sum,t)=&gt;sum+t.amount,0));}
   function sessionView(){return `&lt;h2&gt;Marketing Session&lt;/h2&gt;&lt;div class=&quot;sm-table-wrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;User&lt;/th&gt;&lt;th&gt;Total sessions&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Marketing hours&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Leads&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;sm-name&quot;&gt;Alice Johnson&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;12.00&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;18&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;${btn(&#x27;View Marketing Management Log&#x27;,&#x27;log&#x27;)}`;}
   function checkout(){
     if(state.fundResult===&#x27;success&#x27;)return heading(&#x27;Marketing funding&#x27;,&#x27;Marketing Management &amp;gt; Credit Card&#x27;)+`&lt;div class=&quot;sm-checkout&quot;&gt;&lt;h2&gt;Funding successful&lt;/h2&gt;${notice(`${cash(cents(state.fundAmount))} CAD has been added to your available Marketing credits.`,&#x27;sm-success&#x27;)}&lt;div class=&quot;sm-kv&quot;&gt;&lt;span&gt;Reference&lt;/span&gt;&lt;span&gt;${esc(state.fundings[0].ref)}&lt;/span&gt;&lt;/div&gt;${balanceCards(false)}&lt;div class=&quot;sm-actions&quot;&gt;${btn(&#x27;Return to Marketing Management&#x27;,&#x27;funding&#x27;,true)}${btn(&#x27;Go to Prepare Payroll&#x27;,&#x27;payroll&#x27;)}&lt;/div&gt;&lt;/div&gt;`;
@@ -1712,14 +2045,23 @@ html&gt;body{padding:0}&lt;/style&gt;
     const identityFilters=op?`&lt;label class=&quot;sm-field&quot;&gt;Employee&lt;select data-filter=&quot;employee&quot; aria-label=&quot;Employee filter&quot;&gt;&lt;option value=&quot;all&quot;&gt;All employees&lt;/option&gt;${EMP.map(e=&gt;`&lt;option value=&quot;${e.id}&quot;${state.filters.employee===e.id?&#x27; selected&#x27;:&#x27;&#x27;}&gt;${e.name}&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/select&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;Role&lt;select data-filter=&quot;role&quot; aria-label=&quot;Role filter&quot;&gt;${[&#x27;all&#x27;,&#x27;Marketer&#x27;,&#x27;Caller&#x27;].map(v=&gt;`&lt;option value=&quot;${v}&quot;${state.filters.role===v?&#x27; selected&#x27;:&#x27;&#x27;}&gt;${v===&#x27;all&#x27;?&#x27;All roles&#x27;:v}&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/select&gt;&lt;/label&gt;`:&#x27;&#x27;;
     return heading(title,op?&#x27;Sales &amp;gt; Marketing &amp;gt; Management Log&#x27;:&#x27;My Work &amp;gt; Earnings&#x27;,op?btn(&#x27;Marketing Management&#x27;,&#x27;funding&#x27;):&#x27;&#x27;)+`&lt;h2&gt;${op?&#x27;Work &amp; results&#x27;:marketer?&#x27;Marketing sessions&#x27;:&#x27;Calling activity&#x27;}&lt;/h2&gt;&lt;div class=&quot;sm-filters&quot;&gt;${identityFilters}&lt;label class=&quot;sm-field&quot;&gt;Work date from&lt;input type=&quot;date&quot; aria-label=&quot;Work date from&quot; data-filter=&quot;from&quot; value=&quot;${esc(state.filters.from)}&quot;&gt;&lt;/label&gt;&lt;label class=&quot;sm-field&quot;&gt;Work date to&lt;input type=&quot;date&quot; aria-label=&quot;Work date to&quot; data-filter=&quot;to&quot; value=&quot;${esc(state.filters.to)}&quot;&gt;&lt;/label&gt;&lt;/div&gt;${state.filters.from&amp;&amp;state.filters.to&amp;&amp;state.filters.from&gt;state.filters.to?notice(&#x27;The work start date must not be after the end date.&#x27;,&#x27;sm-error&#x27;):&#x27;&#x27;}&lt;div class=&quot;sm-table-wrap&quot;&gt;&lt;table class=&quot;sm-earnings&quot; aria-label=&quot;${op?&#x27;Employee work and results&#x27;:marketer?&#x27;My marketing sessions&#x27;:&#x27;My calling activity&#x27;}&quot;&gt;&lt;thead&gt;&lt;tr&gt;${op?&#x27;&lt;th&gt;Employee&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&#x27;:&#x27;&#x27;}&lt;th&gt;${marketer?&#x27;Marketing session&#x27;:op?&#x27;Work date / session&#x27;:&#x27;Calling date&#x27;}&lt;/th&gt;${marketer?&#x27;&lt;th&gt;Date&lt;/th&gt;&#x27;:&#x27;&#x27;}&lt;th class=&quot;sm-num&quot;&gt;${marketer?&#x27;Marketing hours&#x27;:&#x27;Hours worked&#x27;}&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;${marketer?&#x27;Leads&#x27;:op?&#x27;Results&#x27;:&#x27;Conversions&#x27;}&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;${marketer?&#x27;Rate per lead&#x27;:op?&#x27;Unit rate&#x27;:&#x27;Rate per conversion&#x27;}&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Calculated earnings&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${records.map(w=&gt;{const e=EMP.find(e=&gt;e.id===w.employee);return `&lt;tr&gt;${op?`&lt;td class=&quot;sm-name&quot;&gt;${e.name}&lt;/td&gt;&lt;td&gt;${e.role}&lt;/td&gt;`:&#x27;&#x27;}&lt;td&gt;${marketer?esc(w.session):date(w.date)+(op&amp;&amp;e.role===&#x27;Marketer&#x27;?`&lt;br&gt;&lt;span class=&quot;sm-small sm-muted&quot;&gt;${esc(w.session)}&lt;/span&gt;`:&#x27;&#x27;)}&lt;/td&gt;${marketer?`&lt;td&gt;${date(w.date)}&lt;/td&gt;`:&#x27;&#x27;}&lt;td class=&quot;sm-num&quot;&gt;${w.hours.toFixed(2)}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${w.units}${op?&#x27; &#x27;+(e.unit===&#x27;lead&#x27;?&#x27;leads&#x27;:&#x27;conversions&#x27;):&#x27;&#x27;}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(e.rate)}${op?&#x27; / &#x27;+e.unit:&#x27;&#x27;}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(w.units*e.rate)}&lt;/td&gt;&lt;/tr&gt;`;}).join(&#x27;&#x27;)||`&lt;tr&gt;&lt;td colspan=&quot;8&quot; class=&quot;sm-empty&quot;&gt;No work records for these filters&lt;/td&gt;&lt;/tr&gt;`}&lt;/tbody&gt;&lt;tfoot&gt;&lt;tr&gt;&lt;td colspan=&quot;${op?6:marketer?5:4}&quot;&gt;Calculated earnings for displayed work&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(records.reduce((s,w)=&gt;s+w.units*EMP.find(e=&gt;e.id===w.employee).rate,0))}&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;&lt;/table&gt;&lt;/div&gt;${notice(&#x27;Calculated earnings reflect results × unit rate. Final amounts entered by the operator may differ.&#x27;)}&lt;div class=&quot;sm-heading&quot; style=&quot;margin-top:30px&quot;&gt;&lt;h2&gt;Payment Log&lt;/h2&gt;&lt;label class=&quot;sm-field&quot;&gt;Payroll period&lt;select aria-label=&quot;Payment payroll period&quot; data-filter=&quot;period&quot;&gt;${[[&#x27;all&#x27;,&#x27;All payroll periods&#x27;],[&#x27;21&#x27;,&#x27;#21 · Oct 5 – Oct 18, 2026&#x27;],[&#x27;20&#x27;,&#x27;#20 · Sep 21 – Oct 4, 2026&#x27;]].map(([v,l])=&gt;`&lt;option value=&quot;${v}&quot;${state.filters.period===v?&#x27; selected&#x27;:&#x27;&#x27;}&gt;${l}&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;&lt;div class=&quot;sm-table-wrap&quot;&gt;&lt;table class=&quot;sm-payment-table&quot; aria-label=&quot;${op?&#x27;Employee&#x27;:&#x27;My&#x27;} Payment Log&quot;&gt;&lt;thead&gt;&lt;tr&gt;${op?&#x27;&lt;th&gt;Employee&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&#x27;:&#x27;&#x27;}&lt;th&gt;Posting date&lt;/th&gt;&lt;th&gt;Payroll period&lt;/th&gt;&lt;th class=&quot;sm-num&quot;&gt;Total paid (CAD)&lt;/th&gt;&lt;th&gt;Paid by&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${payments.map(p=&gt;{const e=EMP.find(e=&gt;e.id===p.employee);return `&lt;tr&gt;${op?`&lt;td class=&quot;sm-name&quot;&gt;${e.name}&lt;/td&gt;&lt;td&gt;${e.role}&lt;/td&gt;`:&#x27;&#x27;}&lt;td&gt;${date(p.date)}&lt;/td&gt;&lt;td&gt;${p.label}&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(p.amount)}&lt;/td&gt;&lt;td&gt;Cameron Roach&lt;/td&gt;&lt;/tr&gt;`;}).join(&#x27;&#x27;)||`&lt;tr&gt;&lt;td colspan=&quot;6&quot; class=&quot;sm-empty&quot;&gt;No posted payments for this payroll period&lt;/td&gt;&lt;/tr&gt;`}&lt;/tbody&gt;&lt;tfoot&gt;&lt;tr&gt;&lt;td colspan=&quot;${op?4:2}&quot;&gt;Total for displayed payments&lt;/td&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(payments.reduce((s,p)=&gt;s+p.amount,0))}&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class=&quot;sm-small sm-muted&quot;&gt;Payment Log uses the payroll-period filter, independently of work dates. Amounts are not allocated to individual work records.&lt;/p&gt;`;
   }
+  function profit(){
+    // Layout-only sample: no expense-recognition trigger is inferred from funding or posting.
+    const rows=[[&#x27;Revenue&#x27;,&#x27;total&#x27;],[&#x27;Job Training Paid&#x27;,&#x27;&#x27;],[&#x27;Labour&#x27;,&#x27;&#x27;],[&#x27;Paint &amp; Supplies&#x27;,&#x27;&#x27;],[&#x27;Royalty&#x27;,&#x27;&#x27;],[&#x27;Commission&#x27;,&#x27;&#x27;],[&#x27;Gross Profit&#x27;,&#x27;total&#x27;],[&#x27;Fixed Expenses&#x27;,&#x27;&#x27;],[&#x27;Marketing Expense&#x27;,&#x27;detail&#x27;],[&#x27;Net Profit&#x27;,&#x27;total&#x27;]];
+    return heading(&#x27;Profit&#x27;,&#x27;Profit &amp;gt; Income Statement&#x27;)+`&lt;section class=&quot;sm-income&quot; aria-labelledby=&quot;sm-income-title&quot;&gt;&lt;h2 id=&quot;sm-income-title&quot;&gt;Income Statement&lt;/h2&gt;&lt;div class=&quot;sm-income-table&quot;&gt;&lt;table aria-label=&quot;Income Statement&quot;&gt;&lt;tbody&gt;${rows.map(([label,type])=&gt;`&lt;tr${type?` class=&quot;sm-income-${type}&quot;`:&#x27;&#x27;}&gt;&lt;th scope=&quot;row&quot;&gt;${label}&lt;/th&gt;&lt;td class=&quot;sm-num&quot;&gt;${cash(0)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/section&gt;`;
+  }
   function render(){
     q(&#x27;[data-screen]&#x27;).value=state.screen;
-    const role=state.screen===&#x27;bc&#x27;?&#x27;Business Coach&#x27;:state.screen===&#x27;ho&#x27;?&#x27;Head Office&#x27;:state.screen===&#x27;marketer&#x27;?&#x27;Marketer&#x27;:state.screen===&#x27;caller&#x27;?&#x27;Caller&#x27;:&#x27;Operator&#x27;;
-    const profile={Operator:[&#x27;Cameron Roach&#x27;,&#x27;CR&#x27;],&#x27;Business Coach&#x27;:[&#x27;Jordan Brown&#x27;,&#x27;JB&#x27;],&#x27;Head Office&#x27;:[&#x27;Vy Huynh&#x27;,&#x27;VH&#x27;],Marketer:[&#x27;Alice Johnson&#x27;,&#x27;AJ&#x27;],Caller:[&#x27;Michael Lee&#x27;,&#x27;ML&#x27;]}[role];
+    const role=state.screen===&#x27;bc&#x27;?&#x27;Business Coach&#x27;:state.screen===&#x27;ho&#x27;?&#x27;Head Office&#x27;:state.screen===&#x27;report&#x27;?&#x27;President&#x27;:state.screen===&#x27;marketer&#x27;?&#x27;Marketer&#x27;:state.screen===&#x27;caller&#x27;?&#x27;Caller&#x27;:&#x27;Operator&#x27;;
+    const profile={Operator:[&#x27;Cameron Roach&#x27;,&#x27;CR&#x27;],&#x27;Business Coach&#x27;:[&#x27;Jordan Brown&#x27;,&#x27;JB&#x27;],&#x27;Head Office&#x27;:[&#x27;Vy Huynh&#x27;,&#x27;VH&#x27;],President:[&#x27;Ha Vy&#x27;,&#x27;HV&#x27;],Marketer:[&#x27;Alice Johnson&#x27;,&#x27;AJ&#x27;],Caller:[&#x27;Michael Lee&#x27;,&#x27;ML&#x27;]}[role];
     q(&#x27;[data-profile]&#x27;).textContent=profile[0];q(&#x27;[data-avatar]&#x27;).textContent=profile[1];q(&#x27;[data-role]&#x27;).textContent=role;
-    const production=[&#x27;payroll&#x27;,&#x27;bc&#x27;,&#x27;ho&#x27;].includes(state.screen);q(&#x27;[data-side-production]&#x27;).classList.toggle(&#x27;sm-active&#x27;,production);q(&#x27;[data-side-sales]&#x27;).classList.toggle(&#x27;sm-active&#x27;,!production);
+    const production=[&#x27;payroll&#x27;,&#x27;bc&#x27;,&#x27;ho&#x27;].includes(state.screen);q(&#x27;[data-side-production]&#x27;).classList.toggle(&#x27;sm-active&#x27;,production);q(&#x27;[data-side-sales]&#x27;).classList.toggle(&#x27;sm-active&#x27;,!production&amp;&amp;![&#x27;profit&#x27;,&#x27;report&#x27;].includes(state.screen));q(&#x27;[data-side-profit]&#x27;).classList.toggle(&#x27;sm-active&#x27;,state.screen===&#x27;profit&#x27;);q(&#x27;[data-side-admin]&#x27;).classList.toggle(&#x27;sm-active&#x27;,state.screen===&#x27;report&#x27;);
+    if(state.screen===&#x27;profit&#x27;)q(&#x27;[data-side-profit]&#x27;).setAttribute(&#x27;aria-current&#x27;,&#x27;page&#x27;);else q(&#x27;[data-side-profit]&#x27;).removeAttribute(&#x27;aria-current&#x27;);
     q(&#x27;[data-live]&#x27;).textContent=message;
-    main.innerHTML=state.screen===&#x27;funding&#x27;?funding():state.screen===&#x27;checkout&#x27;?checkout():state.screen===&#x27;payroll&#x27;?payroll():state.screen===&#x27;bc&#x27;?bc():state.screen===&#x27;ho&#x27;?ho():tracking();
+    main.innerHTML=state.screen===&#x27;funding&#x27;?funding():state.screen===&#x27;checkout&#x27;?checkout():state.screen===&#x27;payroll&#x27;?payroll():state.screen===&#x27;bc&#x27;?bc():state.screen===&#x27;ho&#x27;?ho():state.screen===&#x27;profit&#x27;?profit():state.screen===&#x27;report&#x27;?report():tracking();
+    drawFundingDrawer();
+    q(&#x27;[data-action=&quot;receive-interac&quot;]&#x27;).textContent=state.transfers.some(t=&gt;t.id===&#x27;DEMO-MKT-003&#x27;)?&#x27;Replay sample Interac notification&#x27;:&#x27;Receive sample Interac notification&#x27;;
+    q(&#x27;.sm-demo-interac small&#x27;).textContent=`Demo only · Cameron Roach / $250.00 sample: ${state.transfers.find(t=&gt;t.id===&#x27;DEMO-MKT-001&#x27;)?.status||&#x27;Unclaimed&#x27;}.`;
     // Sandbox previews disable native form submission; this action is local only.
     if(q(&#x27;[data-pay]&#x27;))q(&#x27;[data-pay]&#x27;).type=&#x27;button&#x27;;
     root.querySelectorAll(&#x27;button,summary&#x27;).forEach(el=&gt;el.classList.add(&#x27;cursor-interaction&#x27;));
@@ -1730,20 +2072,35 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
   function fundingError(text){const el=q(&#x27;[data-funding-error]&#x27;);if(el){el.hidden=false;el.textContent=text;}else{message=text;render();}}
   root.addEventListener(&#x27;input&#x27;,e=&gt;{
+    if(e.target.matches(&#x27;[data-transfer-name]&#x27;))drawerName=e.target.value;
+    if(e.target.matches(&#x27;[data-transfer-amount]&#x27;))drawerAmount=e.target.value;
+    if(e.target.matches(&#x27;[data-report-filter]&#x27;)){state.reportFilters[e.target.dataset.reportFilter]=e.target.value;updateReport();save();}
     if(e.target.matches(&#x27;[data-amount]&#x27;)&amp;&amp;!frozen()){state.amounts[+e.target.dataset.amount]=e.target.value;updatePayroll();save();}
     if(e.target.matches(&#x27;[data-note]&#x27;)&amp;&amp;!frozen()){state.notes[+e.target.dataset.note]=e.target.value;save();}
     if(e.target.matches(&#x27;[data-fund-amount]&#x27;)){state.fundAmount=e.target.value;q(&#x27;[data-fund-total]&#x27;).textContent=cash(cents(state.fundAmount)??0);save();}
   });
   root.addEventListener(&#x27;change&#x27;,e=&gt;{
+    if(e.target.matches(&#x27;[data-report-filter]&#x27;)){state.reportFilters[e.target.dataset.reportFilter]=e.target.value;updateReport();save();}
     if(e.target.matches(&#x27;[data-screen]&#x27;))navigate(e.target.value);
     if(e.target.matches(&#x27;[data-filter]&#x27;)){const key=e.target.dataset.filter;state.filters[key]=e.target.value;render();save();const restored=q(`[data-filter=&quot;${key}&quot;]`);if(restored)restored.focus();}
   });
   root.addEventListener(&#x27;click&#x27;,e=&gt;{
+    const reportTab=e.target.closest(&#x27;[data-report-tab]&#x27;);if(reportTab){state.reportTab=reportTab.dataset.reportTab;render();save();q(`#sm-report-tab-${state.reportTab}`).focus();return;}
     const fundTab=e.target.closest(&#x27;[data-fund-tab]&#x27;);if(fundTab){state.fundTab=fundTab.dataset.fundTab;render();save();q(`#sm-fund-tab-${state.fundTab}`).focus();return;}
     const payTab=e.target.closest(&#x27;[data-pay-tab]&#x27;);if(payTab){state.section=payTab.dataset.payTab;render();save();q(`#sm-pay-tab-${state.section}`).focus();return;}
     const el=e.target.closest(&#x27;[data-action],[data-reset],[data-pay]&#x27;);if(!el||el.disabled||busy)return;
-    if(el.hasAttribute(&#x27;data-reset&#x27;)){state=fresh();message=&#x27;Demo reset. Available credits: $600.00; payroll is a draft.&#x27;;render();save();return;}
+    if(el.hasAttribute(&#x27;data-reset&#x27;)){drawerOpen=false;state=fresh();message=&#x27;Demo reset. Available credits: $600.00; payroll is a draft.&#x27;;render();save();return;}
     const action=el.dataset.action;
+    if(action===&#x27;open-etransfer&#x27;){q(&#x27;.sm-funding-menu&#x27;)?.removeAttribute(&#x27;open&#x27;);drawerOpen=true;drawerName=&#x27;&#x27;;drawerAmount=&#x27;&#x27;;drawerError=&#x27;&#x27;;drawFundingDrawer();q(&#x27;[data-transfer-name]&#x27;).focus();return;}
+    if(action===&#x27;close-etransfer&#x27;){closeTransfer();return;}
+    if(action===&#x27;claim-etransfer&#x27;){claimTransfer();return;}
+    if(action===&#x27;receive-interac&#x27;){
+      const exists=state.transfers.some(t=&gt;t.id===&#x27;DEMO-MKT-003&#x27;);
+      if(!exists)state.transfers.unshift({id:&#x27;DEMO-MKT-003&#x27;,channel:&#x27;operator&#x27;,mailbox:&#x27;marketing@studentworks.com&#x27;,date:&#x27;2026-10-22&#x27;,name:&#x27;Cameron Roach&#x27;,email:&#x27;cameron@example.test&#x27;,ref:&#x27;E-TRANSFER MKT003&#x27;,amount:30000,status:&#x27;Unclaimed&#x27;,operator:&#x27;&#x27;,invoice:&#x27;&#x27;});
+      state.screen=&#x27;report&#x27;;state.reportTab=&#x27;operator&#x27;;state.reportFilters=fresh().reportFilters;
+      message=exists?&#x27;Duplicate sample notification ignored. No duplicate record or credits were added.&#x27;:&#x27;Sample Interac notification received: Cameron Roach / $300.00 is Unclaimed. No Marketing credits added until OP claims the transfer.&#x27;;render();save();return;
+    }
+    if(action===&#x27;download-transfers&#x27;){message=&#x27;Download Report is an existing action shown for reference. File export is not simulated in this proposal.&#x27;;q(&#x27;[data-live]&#x27;).textContent=message;return;}
     if(SCREENS.includes(action)){navigate(action);return;}
     if(action===&#x27;cancel-funding&#x27;){navigate(&#x27;funding&#x27;);message=&#x27;Funding cancelled. Your credits have not changed.&#x27;;render();return;}
     if(action===&#x27;marketing-section&#x27;){state.section=&#x27;marketing&#x27;;render();save();return;}
@@ -1766,10 +2123,17 @@ html&gt;body{padding:0}&lt;/style&gt;
     const amount=cents(state.fundAmount);if(amount===null||amount&lt;=0){fundingError(&#x27;Enter a funding amount greater than $0.00 with no more than two decimal places.&#x27;);return;}
     if(form.elements[&#x27;demo-card&#x27;].value.replace(/\s/g,&#x27;&#x27;)!==&#x27;4242424242424242&#x27;||form.elements[&#x27;demo-cvc&#x27;].value!==&#x27;123&#x27;||form.elements[&#x27;demo-expiry&#x27;].value.replace(/\s/g,&#x27;&#x27;)!==&#x27;12/30&#x27;){fundingError(&#x27;Test-only form. Select “Use test details”; real card details must not be entered.&#x27;);form.reset();return;}
     if(state.fundings.length&gt;=30){fundingError(&#x27;Demo history is full. Reset demo data to continue testing.&#x27;);return;}
-    form.reset();state.balance+=amount;state.fundings.unshift({date:&#x27;Oct 19, 2026&#x27;,amount,ref:&#x27;DEMO-FUND-&#x27;+String(state.fundings.length+1).padStart(3,&#x27;0&#x27;)});state.fundResult=&#x27;success&#x27;;message=&#x27;Demo funding successful. Marketing credits are now available.&#x27;;render();save();
+    form.reset();state.balance+=amount;state.fundings.unshift({date:&#x27;Oct 22, 2026&#x27;,method:&#x27;Credit card&#x27;,amount,ref:&#x27;DEMO-FUND-&#x27;+String(state.fundings.length+1).padStart(3,&#x27;0&#x27;)});state.fundResult=&#x27;success&#x27;;message=&#x27;Demo funding successful. Marketing credits are now available.&#x27;;render();save();
   }
   root.addEventListener(&#x27;submit&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-funding-form]&#x27;)){e.preventDefault();completeFunding(e.target);}});
-  root.addEventListener(&#x27;keydown&#x27;,e=&gt;{if(e.key===&#x27;Enter&#x27;&amp;&amp;e.target.closest(&#x27;[data-funding-form]&#x27;)&amp;&amp;e.target.tagName===&#x27;INPUT&#x27;){e.preventDefault();completeFunding(q(&#x27;[data-funding-form]&#x27;));}});
+  root.addEventListener(&#x27;keydown&#x27;,e=&gt;{
+    if(drawerOpen){
+      if(e.key===&#x27;Escape&#x27;){e.preventDefault();closeTransfer();return;}
+      if(e.key===&#x27;Enter&#x27;&amp;&amp;e.target.matches(&#x27;[data-transfer-name],[data-transfer-amount]&#x27;)){e.preventDefault();claimTransfer();return;}
+      if(e.key===&#x27;Tab&#x27;){const controls=[...q(&#x27;.sm-drawer&#x27;).querySelectorAll(&#x27;button,input&#x27;)].filter(el=&gt;!el.disabled),first=controls[0],last=controls[controls.length-1];if(e.shiftKey&amp;&amp;document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&amp;&amp;document.activeElement===last){e.preventDefault();first.focus();}}
+    }
+    if(e.key===&#x27;Enter&#x27;&amp;&amp;e.target.closest(&#x27;[data-funding-form]&#x27;)&amp;&amp;e.target.tagName===&#x27;INPUT&#x27;){e.preventDefault();completeFunding(q(&#x27;[data-funding-form]&#x27;));}
+  });
   render();restore(window.openai?.widgetState);
   window.addEventListener(&#x27;openai:set_globals&#x27;,event=&gt;{if(!busy)restore(event.detail?.globals?.widgetState);});
 })();
@@ -2363,6 +2727,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 "></iframe>
+
 <script>(() => {
   const frame = document.getElementById("codex-visualization");
   if (!(frame instanceof HTMLIFrameElement)) {
